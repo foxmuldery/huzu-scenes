@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青丘祖祠外部 · 狐祖归来 EP01《雪夜孤灯》场景图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.bible-core{max-width:1100px;margin:32px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);margin-bottom:24px;max-width:800px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:20px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-bottom:8px}
+.bible-toggle:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+
+.bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75);letter-spacing:.03em}
+.bible-detail ul{padding-left:20px;margin:6px 0}
+.bible-detail li{margin:3px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+.bible-detail pre{background:rgba(10,12,20,.6);padding:14px;border-radius:4px;font-size:13px;line-height:1.6;color:rgba(215,200,170,.65);overflow-x:auto;margin:10px 0}
+
+/* ── Anchor badge ── */
+.anchor-badge{display:inline-block;font-size:10px;letter-spacing:.1em;padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:middle;position:relative;top:-1px;color:#c9a96e;border:1px solid rgba(201,169,110,.25);background:rgba(201,169,110,.06)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:32px;align-items:start;padding-bottom:8px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card.wide-card{grid-column:1/-1;max-width:1100px;justify-self:center}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em;text-align:right;line-height:1.4}
+.card .label .scene-script{font-size:13px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.6}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;user-select:none;padding:20px;transition:color .2s;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+@media(max-width:480px){.gallery{grid-template-columns:1fr;gap:20px}.hero{padding:40px 16px 30px}.card.wide-card{max-width:100%}.bible-definition{font-size:15px;padding:14px 18px}.bible-detail{padding:20px 16px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · EP01</p>
+  <h1>青 丘 祖 祠</h1>
+  <p class="subtitle">外部景观 · 锚点体系 A01–A09 · 六景</p>
+</header>
+
+<div class="bible-core">
+  <div class="bible-definition"><em>一座被雪山吞没的古老小庙</em>，嵌入万丈绝壁之中。<br>狐族世代守护它，却不知道真正的狐祖并不在庙里，<br>而在<em>山体深处沉睡</em>。</div>
+  <div class="bible-tones">
+    <span class="bible-tone">古老</span><span class="bible-tone">寂静</span><span class="bible-tone">禁忌</span><span class="bible-tone">遗迹</span><span class="bible-tone">山中神庙</span><span class="bible-tone">祖源入口</span><span class="bible-tone">东方志怪</span>
+  </div>
+  <button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整设计圣经</button>
+  <div class="bible-detail" id="bibleDetail">
+    <h3>一、场景定位</h3>
+    <p>场景等级：★★★★★ 英雄场景。青丘祖祠是第一集从「现实狐族秩序」进入「狐祖神话世界」的入口。代表：狐族遗忘的祖源、千年血脉的封印、活祭制度的最高执行地、雪娘命运转折点。</p>
+    <p><strong>核心意象：</strong>雪、孤灯、祖祠、替劫。</p>
+
+    <h3>二、一句话视觉定义</h3>
+    <blockquote>一座被雪山吞没的古老小庙，嵌入万丈绝壁之中。狐族世代守护它，却不知道真正的狐祖并不在庙里，而在山体深处沉睡。</blockquote>
+
+    <h3>三、核心美学关键词</h3>
+    <p><strong>主关键词：</strong>古老、寂静、禁忌、遗迹、山中神庙、祖源入口、东方志怪</p>
+    <p><strong>情绪关键词：</strong>不是宏伟，而是敬畏。不是华丽，而是存在太久。</p>
+
+    <h3>四、空间总关系</h3>
+    <pre>雪山主峰 → 后山未知区域 → 青丘祖祠主体 → 祖祠门前小平台 → 长距离弯折祭道 → 前庭祭礼平台 → 万丈雪谷</pre>
+    <p><strong>核心：山不是背景，山才是主体。</strong></p>
+
+    <h3>五、建筑定义</h3>
+    <p>祖祠不是皇宫、寺庙、道观、宗门建筑。它是一个被狐族后人维护的远古入口。</p>
+    <p>建筑比例：<strong>自然 70% / 人工 30%</strong>——建筑应该像从岩壁里长出来。</p>
+
+    <h3>六、材质圣经</h3>
+    <p><strong>石材：</strong>黑石、风化、裂纹、雪侵、苔痕。 <strong>木材：</strong>旧木、发黑、被雪打湿、修补痕迹。 <strong>金属：</strong>仅青铜灯座、门环、祭器。禁止黄金。</p>
+
+    <h3>七、祭道设计</h3>
+    <p>贴山而建的弯折古道。不是普通楼梯，而是山体中的路。石阶不规则，多个转折，顺山势上升，一侧岩壁一侧深谷。功能：雪娘走向祭礼。情绪：不是朝圣，是走向牺牲。</p>
+
+    <h3>八、前庭祭礼平台</h3>
+    <p>弯折祭道尽头的一块山体祭坪，不是广场。黑石铺地、不规则边界、面向深谷、背靠山壁。核心资产：九只青铜雷兽、无口狐面阵列、祭坛。</p>
+
+    <h3>九、后山关系</h3>
+    <p>祖祠背后不是建筑，而是山。视觉：巨大雪山。隐藏：狐祖真正所在。允许：异常岩层、不自然风雪、山体纹理。禁止：洞口、光门、九尾、秘境入口。</p>
+
+    <h3>十、灯光系统</h3>
+    <p><strong>日常状态：</strong>冷蓝灰，光源为月光、雪光、少量狐灯。<strong>觉醒状态：</strong>冷蓝 → 青绿色祖光。不是爆炸，而是山醒了。</p>
+
+    <h3>十一、色彩系统</h3>
+    <p>墨黑（山体）、雪白（雪）、青灰（空气）、暗铜（祭器）、青绿（狐祖力量）。</p>
+
+    <h3>十二、天气系统</h3>
+    <p>标准：雪夜。元素：飘雪、雾、风、云压山。不要暴风雪，需要安静。</p>
+
+    <h3>十三、摄影规则</h3>
+    <p>祖祠外部必须使用大量广角。推荐：18mm-24mm 环境镜头、低机位、高远构图。构图：天—山—人。人物必须渺小。</p>
+
+    <h3>十四、锚点体系</h3>
+    <table>
+      <tr><th>锚点</th><th>名称</th><th>锁定内容</th></tr>
+      <tr><td>A01</td><td>祖祠山体关系总母版</td><td>山与祖祠比例</td></tr>
+      <tr><td>A02</td><td>祖祠入口近景</td><td>建筑语言</td></tr>
+      <tr><td>A03</td><td>弯折祭道</td><td>人物进入路线</td></tr>
+      <tr><td>A04</td><td>前庭祭礼平台</td><td>仪式空间</td></tr>
+      <tr><td>A05</td><td>无口狐面阵列</td><td>狐族制度</td></tr>
+      <tr><td>A06</td><td>侧廊救援路线</td><td>阿檀动作线</td></tr>
+      <tr><td>A07</td><td>后山关系</td><td>祖源伏笔</td></tr>
+      <tr><td>A08</td><td>门外等待区</td><td>玄晏情感空间</td></tr>
+      <tr><td>A09</td><td>青光觉醒状态</td><td>现实异象（本期暂无图）</td></tr>
+    </table>
+
+    <h3>十五、最终判断标准</h3>
+    <blockquote>失败：「一个漂亮古建筑。」<br>合格：「一个小庙藏在一座山里。」<br>优秀：「这座山本身就是狐祖留下的身体。」</blockquote>
+  </div>
+</div>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">&times;</span>
+  <span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">青 丘 祖 祠 · 狐祖归来 · 雪夜孤灯 · 外部六景</div>
+
+<script>
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整设计圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起设计圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+
+const scenes=[
+// ═══ A01+A07 祖祠山体关系总母版 ═══
+{file:"ChatGPT Image 2026年7月22日 17_58_12.png",name:"祖祠山体关系 · 总母版",script:"「这座山本身就是狐祖留下的身体。」——远眺青丘祖祠嵌入万丈绝壁，石阶蜿蜒而上，暖灯孤悬于雪山与寒雾之间。山不是背景，山才是主体",section:"🗻 山体关系总母版",anchor:"A01 · A07"},
+
+// ═══ A02 祖祠入口近景 ═══
+{file:"ChatGPT Image 2026年7月22日 15_58_57.png",name:"祖祠入口 · 近景",script:"黑石门阙嵌入山体，飞檐覆雪，浮雕满壁。石阶积雪，枯树横生。入口幽暗深邃——远古之门的建筑语言",section:"🚪 祖祠入口",anchor:"A02"},
+
+// ═══ A03 弯折祭道 ═══
+{file:"ChatGPT Image 2026年7月22日 15_59_36.png",name:"弯折祭道 · 孤影",script:"石台悬于绝壁，石灯独明。孤影立于崖边，身后石阶贴山蜿蜒而上。雾谷万丈，雪峰刺天——不是朝圣，是走向牺牲",section:"🛤️ 弯折祭道",anchor:"A03 · A08"},
+{file:"ChatGPT Image 2026年7月22日 15_59_31.png",name:"弯折祭道 · 行列",script:"白衣行列沿桥而上，手提孤灯。祖祠入口悬于崖壁高处，「祖源禁地」刻于石壁。铁链栏杆，石灯列阵——雪娘的祭礼之路",section:"🛤️ 弯折祭道",anchor:"A03"},
+
+// ═══ A04+A05 前庭祭礼平台 ═══
+{file:"ChatGPT Image 2026年7月22日 17_22_27.png",name:"祭礼平台 · 狐面阵列",script:"黑石祭坪悬于雪谷之上。三四十名白衣狐面者环立，狐头旌旗猎猎。冰雾翻涌、石灯明灭——活祭制度的最高执行地",section:"⛩️ 祭礼平台",anchor:"A04 · A05"},
+
+// ═══ A06 侧廊救援路线 ═══
+{file:"ChatGPT Image 2026年7月22日 17_32_15.png",name:"侧廊 · 九尾挂轴",script:"木廊贴崖悬空，廊柱间雪积冰垂。九尾白狐挂轴悬于壁，廊灯暖光映湿木。远处雪峰层叠、瀑布飞泻——阿檀的救援动线",section:"🌉 侧廊",anchor:"A06"}
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);
+const block=document.createElement("div");block.className="section-block";
+const title=document.createElement("div");title.className="section-title";
+const anchorBadge=sc.anchor?`<span class="anchor-badge">${sc.anchor}</span>`:"";
+title.innerHTML=`<div class="line"></div><h2>▎${sec}${anchorBadge}</h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";
+gallery.setAttribute("data-section",sec);
+block.appendChild(gallery);
+root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";
+if(sc.wide)card.classList.add("wide-card");
+card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(210,190,160,.55)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狐祖-场景 · 狐祖归来 EP01《雪夜孤灯》</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;overflow-x:hidden}
+
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.stars::after{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 45% 35%,rgba(255,255,255,.35),transparent),radial-gradient(1.5px 1.5px at 60% 55%,rgba(255,255,255,.45),transparent)}
+
+.hero{position:relative;z-index:1;text-align:center;padding:80px 20px 50px}
+.hero .series{font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.5);margin-bottom:12px}
+.hero h1{font-size:clamp(42px,8vw,72px);font-weight:300;letter-spacing:.2em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35),0 0 80px rgba(180,150,80,.15);margin-bottom:12px;line-height:1.15}
+.hero .sub{font-size:16px;letter-spacing:.25em;color:rgba(190,160,120,.45)}
+
+.divider{position:relative;z-index:1;display:flex;align-items:center;gap:16px;width:min(500px,80vw);margin:8px auto 40px}
+.divider .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(180,160,120,.3),transparent)}
+.divider .dot{width:6px;height:6px;border-radius:50%;background:rgba(200,170,120,.5);box-shadow:0 0 8px rgba(200,170,120,.3)}
+
+.portals{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;width:100%;padding:0 24px 60px}
+
+.portal{position:relative;background:linear-gradient(180deg,rgba(17,21,36,.95) 0%,rgba(12,15,28,.98) 100%);border:1px solid rgba(140,120,80,.25);border-radius:12px;overflow:hidden;text-decoration:none;transition:all .4s ease;cursor:pointer;display:flex;flex-direction:column}
+.portal:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 60px rgba(180,140,80,.1);border-color:rgba(180,140,80,.45)}
+.portal .preview{width:100%;height:280px;overflow:hidden;position:relative;background:#0a0d16}
+.portal .preview img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.portal:hover .preview img{transform:scale(1.06)}
+.portal .preview::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,10,20,.85) 100%);pointer-events:none}
+.portal .info{padding:24px 28px 28px;flex:1;display:flex;flex-direction:column;gap:10px}
+.portal .info .label{font-size:20px;color:#d4c8a8;letter-spacing:.08em;font-weight:400}
+.portal .info .count{font-size:13px;color:rgba(180,150,100,.45);letter-spacing:.1em}
+.portal .info .desc{font-size:14px;color:rgba(200,180,150,.55);line-height:1.7;letter-spacing:.04em}
+.portal .info .arrow{display:inline-block;margin-top:auto;font-size:14px;color:rgba(200,170,120,.4);letter-spacing:.12em;transition:color .3s}
+.portal:hover .info .arrow{color:rgba(220,190,130,.8)}
+
+.footer{position:relative;z-index:1;text-align:center;padding:40px 20px 60px;font-size:13px;letter-spacing:.15em;color:rgba(150,130,90,.35)}
+
+@media(max-width:768px){
+  .portals{grid-template-columns:1fr;gap:28px;padding-bottom:40px}
+  .hero{padding:50px 16px 30px}
+  .portal .preview{height:200px}
+}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<header class="hero">
+  <p class="series">狐祖归来 · EP01 · 雪夜孤灯</p>
+  <h1>狐 祖 — 场 景</h1>
+  <p class="sub">青丘世界观 · 场景概念图集</p>
+</header>
+
+<div class="divider">
+  <span class="line"></span><span class="dot"></span><span class="line"></span>
+</div>
+
+<div class="portals">
+
+  <a class="portal" href="qingqiu-kingdom/">
+    <div class="preview">
+      <img src="qingqiu-kingdom/ChatGPT Image 2026年7月22日 10_53_58.png" alt="青丘王府" loading="eager">
+    </div>
+    <div class="info">
+      <div class="label">青 丘 王 府</div>
+      <div class="count">白狐王庭 · 十大分区 · 二十一景</div>
+      <div class="desc">一座由白狐文明在雪山峡谷中孕育出来的古老王庭。既像王府，也像巢城——冷而美，深而妖。</div>
+      <span class="arrow">▸ 进入图集</span>
+    </div>
+  </a>
+
+  <a class="portal" href="qingqiu-shrine/">
+    <div class="preview">
+      <img src="qingqiu-shrine/ChatGPT Image 2026年7月22日 17_58_12.png" alt="青丘祖祠" loading="eager">
+    </div>
+    <div class="info">
+      <div class="label">青 丘 祖 祠</div>
+      <div class="count">外部景观 · 锚点体系 A01–A09 · 六景</div>
+      <div class="desc">一座被雪山吞没的古老小庙，嵌入万丈绝壁之中。山不是背景，山才是主体——狐祖在深处沉睡。</div>
+      <span class="arrow">▸ 进入图集</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">狐 祖 归 来 · 青 丘 世 界 观 · 场 景 概 念 图 集</div>
+
+</body>
+</html>

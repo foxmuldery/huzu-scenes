@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青丘王国 · 狐祖归来 EP01《雪夜孤灯》场景图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.bible-core{max-width:1100px;margin:32px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);margin-bottom:24px;max-width:800px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:20px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-bottom:8px}
+.bible-toggle:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+
+.bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75);letter-spacing:.03em}
+.bible-detail ul{padding-left:20px;margin:6px 0}
+.bible-detail li{margin:3px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+.bible-detail pre{background:rgba(10,12,20,.6);padding:14px;border-radius:4px;font-size:13px;line-height:1.6;color:rgba(215,200,170,.65);overflow-x:auto;margin:10px 0}
+
+/* ── Zone badge ── */
+.zone-badge{display:inline-block;font-size:10px;letter-spacing:.1em;padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:middle;position:relative;top:-1px}
+.zone-Z01{color:#c9a96e;border:1px solid rgba(201,169,110,.25);background:rgba(201,169,110,.06)}
+.zone-Z02{color:#6ea8c9;border:1px solid rgba(110,168,201,.25);background:rgba(110,168,201,.06)}
+.zone-Z03{color:#9e6ec9;border:1px solid rgba(158,110,201,.25);background:rgba(158,110,201,.06)}
+.zone-Z04{color:#c9b86e;border:1px solid rgba(201,184,110,.25);background:rgba(201,184,110,.06)}
+.zone-Z05{color:#6ea8c9;border:1px solid rgba(110,168,201,.25);background:rgba(110,168,201,.06)}
+.zone-Z06{color:#c96e6e;border:1px solid rgba(201,110,110,.25);background:rgba(201,110,110,.06)}
+.zone-Z07{color:#c96e6e;border:1px solid rgba(201,110,110,.25);background:rgba(201,110,110,.06)}
+.zone-Z08{color:#c9b86e;border:1px solid rgba(201,184,110,.25);background:rgba(201,184,110,.06)}
+.zone-Z09{color:#a0c0d0;border:1px solid rgba(160,192,208,.25);background:rgba(160,192,208,.06)}
+.zone-Z10{color:#6ec9a8;border:1px solid rgba(110,201,168,.25);background:rgba(110,201,168,.06)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(180,160,120,.6);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:32px;align-items:start;padding-bottom:8px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card.wide-card{grid-column:1/-1;max-width:1100px;justify-self:center}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em;text-align:right;line-height:1.4}
+.card .label .scene-script{font-size:13px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.6}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;user-select:none;padding:20px;transition:color .2s;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+@media(max-width:480px){.gallery{grid-template-columns:1fr;gap:20px}.hero{padding:40px 16px 30px}.card.wide-card{max-width:100%}.bible-definition{font-size:15px;padding:14px 18px}.bible-detail{padding:20px 16px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<p class="ep-title">狐祖归来 · EP01</p>
+<h1>雪 夜 孤 灯</h1>
+<p class="subtitle">青丘王国 · 场景概念图集 · 二十一景</p>
+</header>
+
+<div class="bible-core">
+<div class="bible-definition"><em>青丘王府</em>不是「建在山上的一座人类王府」，<br>而是<em>「从雪山峡谷里自然生长出来的白狐王庭」</em>。</div>
+<div class="bible-tones">
+<span class="bible-tone">历史感</span><span class="bible-tone">妖气</span><span class="bible-tone">神秘权力</span><span class="bible-tone">克制的唯美</span>
+</div>
+<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整设计圣经</button>
+<div class="bible-detail" id="bibleDetail">
+<h3>0. 文档定位</h3>
+<p>本文档是《狐祖归来》中「青丘王府」场景系统的<strong>唯一总规范</strong>。</p>
+<h3>2. 世界观与空间身份</h3>
+<p>青丘王府是白狐一脉的王庭与权力中心——狐族的家、朝堂、巢穴与祭域的叠合体。</p>
+<h3>3. 核心美学总纲</h3>
+<h4>四大基调</h4>
+<ol><li><strong>历史感</strong>——岁月感、层积感、风化感</li><li><strong>妖气</strong>——不完全人类化的空间逻辑</li><li><strong>神秘权力</strong>——层层递进的空间压迫</li><li><strong>克制的唯美</strong>——美建立在阴影、岁月、材质之上</li></ol>
+<h3>4. 空间总原则</h3>
+<blockquote>「峡谷中的王庭巢城」——同时具备城（领地边界）、府（家族礼制）、巢（狐类本能）三重属性。</blockquote>
+<ul><li>依山而建，山体参与建筑构成</li><li>空间以高差和回折为核心</li><li>空间是被统治的——监视感、门槛感</li><li>有自然生长痕迹</li><li>狐性进入结构层，不进入装饰层</li></ul>
+<h3>5. 十大分区</h3>
+<table>
+<tr><th>编号</th><th>区域</th><th>功能</th><th>EP01</th></tr>
+<tr><td>Z01</td><td>外门与跨谷桥</td><td>领地边界、第一道门槛</td><td>—</td></tr>
+<tr><td>Z02</td><td>前庭台地</td><td>入府缓冲、仪式前场</td><td>—</td></tr>
+<tr><td>Z03</td><td>雪庭</td><td>公开权力空间、审判</td><td>夜审</td></tr>
+<tr><td>Z04</td><td>守灯长廊</td><td>雪娘日常动线、人性空间</td><td>救猫</td></tr>
+<tr><td>Z05</td><td>白狐正堂</td><td>家族政治中心</td><td>护灯契</td></tr>
+<tr><td>Z06</td><td>王族核心宫殿区</td><td>白狐王族居处</td><td>—</td></tr>
+<tr><td>Z07</td><td>屋脊巡防带</td><td>追逐、巡卫</td><td>开场追逐</td></tr>
+<tr><td>Z08</td><td>灶房与后场</td><td>后勤、烟火</td><td>藏猫</td></tr>
+<tr><td>Z09</td><td>山体洞厅/后山秘径</td><td>祖脉过渡、密道</td><td>—</td></tr>
+<tr><td>Z10</td><td>水系与瀑布界面</td><td>自然景观系统</td><td>—</td></tr>
+</table>
+<h3>7. 建筑语言</h3>
+<p>东方宋式骨架。狐族化：洞口化、环抱化、尾迹化、伏卧化、生长化。<strong>禁止</strong>直白狐狸头、狐耳、卡通符号。</p>
+<h3>9. 材质系统</h3>
+<p><strong>主材：</strong>黑石、旧木、旧铜。<strong>禁忌：</strong>亮面大理石、高抛光金属、过度彩绘。</p>
+<h3>10. 色彩与光影</h3>
+<table><tr><th>类型</th><th>颜色</th></tr><tr><td>基底</td><td>墨黑、炭灰、岩灰</td></tr><tr><td>冷色</td><td>月白、冷蓝灰、雪白</td></tr><tr><td>暖点</td><td>暗琥珀、旧铜金</td></tr></table>
+<h3>16. 绝对禁忌</h3>
+<ul><li>❌ 横店仿古/仙侠模板宗门</li><li>❌ 日本寺社感/鸟居</li><li>❌ 直白狐狸雕像</li><li>❌ 亮金艳红/低幼化符号</li></ul>
+<h3>18. 最终结论</h3>
+<blockquote>一座由白狐文明在雪山峡谷中孕育出来的古老王庭。既像王府，也像巢城；冷而美，深而妖。</blockquote>
+</div>
+</div>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+<span class="lb-close" id="lbClose">&times;</span>
+<span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+<img src="" alt="" id="lbImg">
+<div class="lb-info" id="lbInfo"></div>
+<span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">青 丘 王 国 · 狐祖归来 · 雪夜孤灯 · 二十一景</div>
+
+<script>
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整设计圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起设计圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+
+const scenes=[
+// ── 全景总览 ──
+{file:"ChatGPT Image 2026年7月22日 10_53_50.png",name:"青丘王府 · 全景地图",script:"全貌总览：外山口→跨谷桥→外门阕→前庭台地→雪庭→守灯长廊→灶房→王族核心宫殿→悬崖回廊→瀑布水系→洞厅→巡防屋脊→后山秘径",section:"🗺️ 全景总览",wide:true,zone:""},
+{file:"ChatGPT Image 2026年7月22日 10_53_58.png",name:"青丘王国 · 俯瞰全景",script:"月下雪夜，青丘山城灯火点点，瀑布环绕，云雾翻涌",section:"🗺️ 全景总览",zone:""},
+{file:"ChatGPT Image 2026年7月22日 14_20_37.png",name:"青丘王府 · 山门外庭全景",script:"俯瞰山门广场与层层攀升的宫殿群。圆形祭坛平台居中，蜿蜒山道连廊引向山巅主殿——冷月寒雪，漫山华灯",section:"🗺️ 全景总览",zone:""},
+
+// ── Z01 外门与跨谷桥 ──
+{file:"ChatGPT Image 2026年7月22日 10_10_59 (3).png",name:"山门石桥 · 入口通道",script:"跨谷石桥连接外山与王府，旧铜灯序列引向山壁门阙。谷底浓雾翻涌，冷月透云",section:"🏯 外门与跨谷桥",zone:"Z01"},
+{file:"ChatGPT Image 2026年7月22日 13_40_33.png",name:"外门石桥 · 正面",script:"从桥面正面望向山门——黑石拱桥覆雪，门殿嵌入崖壁，桥两侧旧铜灯发出克制暖光",section:"🏯 外门与跨谷桥",zone:"Z01"},
+{file:"ChatGPT Image 2026年7月22日 13_40_52.png",name:"外门石桥 · 俯瞰",script:"俯瞰角度：石桥跨深谷，门阙凿山而建，身后雪山层叠，瀑布飞泻——入府必经的咽喉要道",section:"🏯 外门与跨谷桥",zone:"Z01"},
+
+// ── 场景远景 ──
+{file:"ChatGPT Image 2026年7月22日 10_10_55 (1).png",name:"青丘王府 · 月下远景",script:"「大雪压住青丘。」月照寒山，万壑无声，飞檐与松林隐于雪雾",section:"🏔️ 山中远景",zone:""},
+{file:"ChatGPT Image 2026年7月22日 10_10_57 (2).png",name:"绝壁仙宫 · 夜瞰",script:"悬崖峭壁间，琼楼飞檐隐于云雾与飞瀑。瀑布与建筑共生，体现「峡谷中的王庭巢城」",section:"🏔️ 山中远景",zone:""},
+{file:"ChatGPT Image 2026年7月22日 14_15_41.png",name:"祖祠山门 · 崖壁近景",script:"黑石双门嵌于山壁，旧铜纹饰。两侧石灯独明，暖光映雪阶。檐角冰锥垂挂，远山瀑布隐于寒雾——禁忌之地的入口",section:"🏔️ 山中远景",zone:""},
+
+// ── Z04 守灯长廊 ──
+{file:"ChatGPT Image 2026年7月22日 10_11_04 (5).png",name:"守灯长廊 · 雪娘与猫",script:"雪娘提青铜油壶走过长廊；头顶瓦裂，小猫随积雪坠落。「它掉下来的时候在叫。」",section:"🌉 守灯长廊",zone:"Z04"},
+{file:"ChatGPT Image 2026年7月22日 13_40_40.png",name:"悬崖回廊 · 月下",script:"长而静的沿崖回廊，旧木廊柱、雕花窗棂。灯座序列延伸，远望雪庭与宫阙，冷中一点暖",section:"🌉 守灯长廊",zone:"Z04"},
+
+// ── Z07 屋脊巡防 ──
+{file:"ChatGPT Image 2026年7月22日 10_11_02 (4).png",name:"屋脊追逐 · 青禾出逃",script:"青禾翻过屋脊，赤足踏碎薄冰；六名白狐巡卫紧追，冰链破空——「盗药罪狐青禾，停下！」",section:"⚔️ 屋脊巡防",zone:"Z07"},
+
+// ── Z03 雪庭 ──
+{file:"ChatGPT Image 2026年7月22日 10_11_06 (6).png",name:"雪庭 · 夜审",script:"白狐灯亮起，王嵩质问雪娘。「青丘禁猫，你不知道？」「知道。」「那是狐族怕它，不是它的错。」",section:"❄️ 雪庭",zone:"Z03"},
+{file:"ChatGPT Image 2026年7月22日 13_40_57.png",name:"正殿前广场 · 中庭",script:"同心圆石雕广场覆雪，中央苍松石灯。正殿高踞台阶之上，飞檐层叠抱拢——权力展示的仪式空间",section:"❄️ 雪庭",zone:"Z03"},
+
+// ── Z05 白狐正堂 ──
+{file:"ChatGPT Image 2026年7月22日 14_34_23.png",name:"白狐正堂 · 祖殿",script:"中轴对称的祭殿内庭，黑石铺地。中央多层塔形香炉燃着幽火，四周烛灯环绕。巨柱满刻云纹龙章，天井裂缝透入冷月寒光。两侧洞开可见雪山夜色",section:"🏛️ 白狐正堂",zone:"Z05"},
+
+// ── 王府宴会厅 ──
+{file:"ChatGPT Image 2026年7月22日 10_11_08 (7).png",name:"王府宴会厅 · 长案",script:"深色旧木梁柱撑起高挑厅堂。黑漆长案居中，两侧列高背椅。冷光穿窗，暗刻九尾纹隐于柱屏——家族议事与宴饮之所",section:"🏛️ 白狐正堂",zone:"Z05"},
+
+// ── Z06 王座大厅 ──
+{file:"ChatGPT Image 2026年7月22日 13_43_20.png",name:"王座大厅 · 九尾",script:"中轴对称大殿，黑色巨柱撑起高穹。宝座后是巨大的九尾抽象雕塑屏风。天光垂落，两侧可见雪山月夜",section:"👑 王座大厅",zone:"Z06"},
+
+// ── Z08 灶房 ──
+{file:"ChatGPT Image 2026年7月22日 10_11_10 (8).png",name:"王府灶房 · 藏猫",script:"阿檀翻窗而来，雪娘把小猫藏进米缸。灶火温暖，铜锅蒸汽，窗外雪夜远山",section:"🔥 灶房与后场",zone:"Z08"},
+
+// ── Z02 前庭台地 ──
+{file:"ChatGPT Image 2026年7月22日 14_20_29.png",name:"前庭台地 · 祭坛广场",script:"入府后第一处缓冲空间——半圆形石雕祭坛平台居中，刻满阵纹。两侧灯柱林立，巨阶直通山腰主殿。冷月、积雪、微灯，开敞而受控",section:"🏛️ 前庭台地",zone:"Z02"},
+
+// ── Z09 山体洞厅 ──
+{file:"ChatGPT Image 2026年7月22日 14_20_19.png",name:"山体洞厅 · 地底密道",script:"天井裂缝透入冷光与落雪。黑石古桥跨越深渊，台阶通向嵌于岩壁的门楼。洞厅深处悬空阁楼隐现——祖脉过渡的神秘通道",section:"🕳️ 山体洞厅",zone:"Z09"},
+
+// ── Z10 绝壁飞廊 ──
+{file:"ChatGPT Image 2026年7月22日 13_40_46.png",name:"绝壁飞廊 · 栈道",script:"悬崖间的悬空飞廊与栈道，依山势蜿蜒。连接各殿宇的空中通廊，谷底云雾与瀑布环绕",section:"💧 绝壁飞廊",zone:"Z10"}
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);
+const block=document.createElement("div");block.className="section-block";
+const title=document.createElement("div");title.className="section-title";
+const zoneBadge=sc.zone?`<span class="zone-badge zone-${sc.zone}">${sc.zone}</span>`:"";
+title.innerHTML=`<div class="line"></div><h2>▎${sec}${zoneBadge}</h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";
+gallery.setAttribute("data-section",sec);
+block.appendChild(gallery);
+root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";
+if(sc.wide)card.classList.add("wide-card");
+card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</body>
+</html>
