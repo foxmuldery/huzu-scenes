@@ -52,6 +52,18 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 
 .footer{position:relative;z-index:1;text-align:center;padding:40px 20px 60px;font-size:13px;letter-spacing:.15em;color:rgba(150,130,90,.35)}
 
+/* ═══ 密码门 ═══ */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:rgba(6,6,16,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(12px);gap:0}
+.pw-gate.hidden{display:none}
+.pw-gate .pw-brand{font-size:26px;letter-spacing:.2em;color:#d4c8a0;margin-bottom:6px}
+.pw-gate .pw-hint{font-size:13px;color:rgba(180,160,120,.4);letter-spacing:.12em;margin-bottom:28px}
+.pw-gate input{width:260px;padding:12px 16px;font-size:15px;letter-spacing:.1em;color:#d4c8a0;background:rgba(20,24,40,.8);border:1px solid rgba(180,160,120,.25);border-radius:6px;outline:none;text-align:center;transition:border-color .3s}
+.pw-gate input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate input::placeholder{color:rgba(180,160,120,.25)}
+.pw-gate button{margin-top:14px;padding:10px 42px;font-size:14px;letter-spacing:.15em;color:#e0d4b0;background:rgba(200,170,120,.12);border:1px solid rgba(200,170,120,.3);border-radius:6px;cursor:pointer;transition:all .25s}
+.pw-gate button:hover{background:rgba(200,170,120,.2);border-color:rgba(200,170,120,.5)}
+.pw-err{margin-top:16px;font-size:13px;color:rgba(200,100,80,.7);letter-spacing:.08em;min-height:20px}
+
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}
   .sidebar.open{transform:translateX(0)}
@@ -66,6 +78,14 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 </style>
 </head>
 <body>
+
+<div class="pw-gate" id="pwGate">
+  <div class="pw-brand">狐祖 · 场景</div>
+  <div class="pw-hint">请输入访问密码</div>
+  <input type="password" id="pwInput" placeholder="密码" onkeydown="if(event.key==='Enter')checkPw()">
+  <button onclick="checkPw()">进 入</button>
+  <div class="pw-err" id="pwErr"></div>
+</div>
 
 <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="菜单">☰</button>
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
@@ -126,6 +146,9 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 </div>
 
 <script>
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+if(sessionStorage.getItem("huzu_auth"))document.getElementById("pwGate").classList.add("hidden");
+async function checkPw(){const e=document.getElementById("pwErr"),i=document.getElementById("pwInput");try{const d=new TextEncoder().encode(i.value),h=await crypto.subtle.digest("SHA-256",d);const x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,"0")).join("");if(x===PW_HASH){document.getElementById("pwGate").classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误";i.value=""}}catch(r){e.textContent="出错了，请重试"}}
 function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
 </script>
 </body>
