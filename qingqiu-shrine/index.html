@@ -16,6 +16,11 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
 .sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
 .sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-subnav{margin-top:8px;padding:0 10px;border-top:1px solid rgba(180,160,120,.08);overflow-y:auto;flex:1}
+.sidebar-subnav .subnav-label{padding:12px 14px 6px;font-size:11px;letter-spacing:.15em;color:rgba(180,160,120,.3)}
+.sidebar-subnav a{display:flex;align-items:center;gap:6px;padding:5px 14px;font-size:12px;letter-spacing:.05em;color:rgba(180,150,120,.35);text-decoration:none;border-radius:4px;transition:all .2s;margin:1px 0}
+.sidebar-subnav a:hover{color:#c8b890;background:rgba(200,170,120,.04)}
+.sidebar-subnav a.active{color:#d4c8a0;background:rgba(200,170,120,.08);border:1px solid rgba(200,170,120,.15)}
 .sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px;line-height:1;transition:color .2s}
 .sidebar-toggle:hover{color:rgba(220,190,130,.9)}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
@@ -124,6 +129,7 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
     <a href="../qingqiu-kingdom/"><span class="nav-icon">🏯</span> 青丘王府</a>
     <a href="./" class="active"><span class="nav-icon">⛩️</span> 青丘祖祠</a>
   </div>
+  <div class="sidebar-subnav" id="subnav"></div>
 </nav>
 
 <div class="body-wrap">
@@ -240,11 +246,12 @@ const scenes=[
 
 const root=document.getElementById("content-root");
 const doneSections=new Set();
+let secIdx=0;
 scenes.forEach((sc,i)=>{
 const sec=sc.section;
 if(!doneSections.has(sec)){
 doneSections.add(sec);
-const block=document.createElement("div");block.className="section-block";
+const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
 const title=document.createElement("div");title.className="section-title";
 const anchorBadge=sc.anchor?`<span class="anchor-badge">${sc.anchor}</span>`:"";
 title.innerHTML=`<div class="line"></div><h2>▎${sec}${anchorBadge}</h2><div class="line"></div>`;
@@ -262,6 +269,18 @@ card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}
 card.addEventListener("click",()=>openLightbox(i));
 gal.appendChild(card);
 });
+
+// ── 生成子导航 ──
+const subnav=document.getElementById("subnav"),sections=[];
+subnav.innerHTML='<div class="subnav-label">青丘祖祠锚点</div>';
+doneSections.forEach(sec=>{
+  const id="sec-"+sections.length;sections.push({id,sec});
+  const a=document.createElement("a");a.href="#"+id;a.textContent=sec;a.onclick=e=>{e.preventDefault();document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})};
+  subnav.appendChild(a);
+});
+function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
+window.addEventListener("scroll",updateActiveNav,{passive:true});
+updateActiveNav();
 
 const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
 let cur=0;
