@@ -6,6 +6,7 @@
 <title>青丘王国 · 狐祖归来 EP01《雪夜孤灯》场景图集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
 
 /* ═══ 左侧导航 ═══ */
@@ -299,7 +300,7 @@ const subnav=document.getElementById("subnav"),sections=[];
 subnav.innerHTML='<div class="subnav-label">青丘王府分区</div>';
 doneSections.forEach(sec=>{
   const id="sec-"+sections.length;sections.push({id,sec});
-  const a=document.createElement("a");a.href="#"+id;a.textContent=sec;a.onclick=e=>{e.preventDefault();document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})};
+  const a=document.createElement("a");a.href="#"+id;a.textContent=sec;
   subnav.appendChild(a);
 });
 
