@@ -40,6 +40,9 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
 .bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-bottom:8px}
 .bible-toggle:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy{display:inline-block;font-size:13px;letter-spacing:.1em;color:rgba(180,150,100,.4);cursor:pointer;padding:7px 18px;border:1px solid rgba(180,150,100,.15);border-radius:4px;background:transparent;margin-left:10px;transition:all .25s}
+.bible-copy:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy.copied{color:#8cb880;border-color:rgba(140,184,128,.4)}
 
 .bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .bible-detail.active{display:block}
@@ -146,7 +149,7 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
   <div class="bible-tones">
     <span class="bible-tone">古老</span><span class="bible-tone">寂静</span><span class="bible-tone">禁忌</span><span class="bible-tone">遗迹</span><span class="bible-tone">山中神庙</span><span class="bible-tone">祖源入口</span><span class="bible-tone">东方志怪</span>
   </div>
-  <button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整设计圣经</button>
+  <button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整设计圣经</button><button class="bible-copy" id="bibleCopy" onclick="copyBible()" title="一键复制全部圣经内容">📋 复制</button>
   <div class="bible-detail" id="bibleDetail">
     <h3>一、场景定位</h3>
     <p>场景等级：★★★★★ 英雄场景。青丘祖祠是第一集从「现实狐族秩序」进入「狐祖神话世界」的入口。代表：狐族遗忘的祖源、千年血脉的封印、活祭制度的最高执行地、雪娘命运转折点。</p>
@@ -226,6 +229,7 @@ const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa"
 if(sessionStorage.getItem("huzu_auth"))document.getElementById("pwGate").classList.add("hidden");
 async function checkPw(){const e=document.getElementById("pwErr"),i=document.getElementById("pwInput");try{const d=new TextEncoder().encode(i.value),h=await crypto.subtle.digest("SHA-256",d);const x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,"0")).join("");if(x===PW_HASH){document.getElementById("pwGate").classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误";i.value=""}}catch(r){e.textContent="出错了，请重试"}}
 function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整设计圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起设计圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+async function copyBible(){var t=document.getElementById("bibleDetail").innerText,c=document.getElementById("bibleCopy");try{await navigator.clipboard.writeText(t);c.textContent="✓ 已复制";c.classList.add("copied");setTimeout(function(){c.textContent="📋 复制";c.classList.remove("copied")},2000)}catch(e){c.textContent="✗ 失败";setTimeout(function(){c.textContent="📋 复制"},2000)}}
 
 const scenes=[
 // ═══ A01+A07 祖祠山体关系总母版 ═══
