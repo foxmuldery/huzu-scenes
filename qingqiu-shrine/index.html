@@ -238,6 +238,9 @@ function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.g
 async function copyBible(){var t=document.getElementById("bibleDetail").innerText,c=document.getElementById("bibleCopy");try{await navigator.clipboard.writeText(t);c.textContent="✓ 已复制";c.classList.add("copied");setTimeout(function(){c.textContent="📋 复制";c.classList.remove("copied")},2000)}catch(e){c.textContent="✗ 失败";setTimeout(function(){c.textContent="📋 复制"},2000)}}
 
 const scenes=[
+// ═══ A00 祖祠前道 ═══
+{file:"A00_祖祠前道入口_巨印崖壁.png",name:"祖祠前道 · 巨印崖壁",script:"雪山隘口——巨型圆石古印嵌入崖壁，风化几何纹路。蜿蜒石径贴山而上，两侧石灯序列引向祖祠——古老、禁忌、非人力所造",section:"🚪 祖祠前道",anchor:"A00"},
+
 // ═══ A01+A07 祖祠山体关系总母版 ═══
 {file:"ChatGPT Image 2026年7月22日 17_58_12.png",name:"祖祠山体关系 · 总母版",script:"「这座山本身就是狐祖留下的身体。」——远眺青丘祖祠嵌入万丈绝壁，石阶蜿蜒而上，暖灯孤悬于雪山与寒雾之间。山不是背景，山才是主体",section:"🗻 山体关系总母版",anchor:"A01 · A07"},
 
