@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光比图 · 狐祖归来 EP01《雪夜孤灯》</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+
+/* ═══ 左侧导航 ═══ */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:210px;background:linear-gradient(180deg,#0d1025 0%,#0a0d1a 100%);border-right:1px solid rgba(180,160,120,.12);z-index:100;display:flex;flex-direction:column;padding:28px 0 20px}
+.sidebar-brand{padding:0 22px 20px;font-size:18px;letter-spacing:.15em;color:#d4c8a0;text-align:center;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 10px}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px;letter-spacing:.08em;color:rgba(200,180,150,.55);text-decoration:none;border-radius:6px;transition:all .25s}
+.sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
+.sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
+.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-subnav{margin-top:8px;padding:0 10px;border-top:1px solid rgba(180,160,120,.08);overflow-y:auto;flex:1}
+.sidebar-subnav .subnav-label{padding:12px 14px 6px;font-size:11px;letter-spacing:.15em;color:rgba(180,160,120,.3)}
+.sidebar-subnav a{display:flex;align-items:center;gap:6px;padding:5px 14px;font-size:12px;letter-spacing:.05em;color:rgba(180,150,120,.35);text-decoration:none;border-radius:4px;transition:all .2s;margin:1px 0}
+.sidebar-subnav a:hover{color:#c8b890;background:rgba(200,170,120,.04)}
+.sidebar-subnav a.active{color:#d4c8a0;background:rgba(200,170,120,.08);border:1px solid rgba(200,170,120,.15)}
+.sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px;line-height:1}
+.sidebar-toggle:hover{color:rgba(220,190,130,.9)}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.body-wrap{margin-left:210px}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:32px;align-items:start;padding-bottom:8px}
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em;text-align:right;line-height:1.4}
+.card .label .scene-script{font-size:13px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.6}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;user-select:none;padding:20px;transition:color .2s;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .sidebar-toggle{display:block}.sidebar-overlay{display:none}.sidebar-overlay.show{display:block}
+  .body-wrap{margin-left:0}
+}
+@media(max-width:480px){.gallery{grid-template-columns:1fr;gap:20px}.hero{padding:40px 16px 30px}}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="菜单">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">狐祖 · 场景</div>
+  <div class="sidebar-nav">
+    <a href="../"><span class="nav-icon">🏠</span> 首页</a>
+    <a href="../qingqiu-kingdom/"><span class="nav-icon">🏯</span> 青丘王府</a>
+    <a href="../qingqiu-shrine/"><span class="nav-icon">⛩️</span> 青丘祖祠</a>
+    <a href="./" class="active"><span class="nav-icon">💡</span> 光比图</a>
+  </div>
+  <div class="sidebar-subnav" id="subnav"></div>
+</nav>
+
+<div class="body-wrap">
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · EP01</p>
+  <h1>光 比 图</h1>
+  <p class="subtitle">场景照明参考板 · 同构空场重打光 · 45 板</p>
+</header>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">&times;</span>
+  <span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">狐 祖 归 来 · 场 景 光 比 板 · 原图锁结构 L-图锁照明</div>
+
+</div>
+
+<script>
+const scenes=[
+// ═══ 🏯 王府建筑 ═══
+{file:"L-P01_01_山门石桥主向_v001.png",name:"山门石桥 · 主向",script:"冷月锁山门、石桥与崖壁；暖灯仅标示路径边界",section:"🏯 王府建筑"},
+{file:"L-P01_02_外门石桥俯瞰_v001.png",name:"外门石桥 · 俯瞰",script:"高角度俯瞰——月照桥面、谷底沉黑",section:"🏯 王府建筑"},
+{file:"L-P01_03_外门石桥正面反打_v001.png",name:"外门石桥 · 反打",script:"反向回望——门阙剪影、桥灯序列",section:"🏯 王府建筑"},
+{file:"L-P01_04_王庭远景月下主向_v001.png",name:"王庭远景 · 月下",script:"远距离月光主向——雪山压迫、王庭一点",section:"🏯 王府建筑"},
+{file:"L-P01_05_山门外庭航拍主向_v001.png",name:"山门外庭 · 航拍",script:"航拍月光——全府灯火层次",section:"🏯 王府建筑"},
+{file:"L-P01_06_冰雪群山夜雪地貌_v001.png",name:"冰雪群山 · 地貌",script:"纯地貌光比——雪峰高光、深谷暗部",section:"🏯 王府建筑"},
+{file:"L-P01_07_绝壁仙宫夜瞰_v001.png",name:"绝壁仙宫 · 夜瞰",script:"夜瞰冷月——飞檐隐于云雾",section:"🏯 王府建筑"},
+{file:"L-P01D_01_雪山洞穴王庭日景强光_v001.png",name:"洞穴王庭 · 日景",script:"日景强光变量——暖金溢出洞穴口",section:"🏯 王府建筑"},
+{file:"L-P02_01_前庭台地中轴_v001.png",name:"前庭台地 · 中轴",script:"中轴月光——祭坛圆纹可读，周边压黑",section:"🏯 王府建筑"},
+{file:"L-P02_02_正殿前中庭反打_v001.png",name:"正殿前中庭 · 反打",script:"反打月光——正殿剪影、灯柱边界",section:"🏯 王府建筑"},
+{file:"L-P03_01_守灯长廊主向_v001.png",name:"守灯长廊 · 主向",script:"长廊纵深——冷月斜掠、廊灯低位暖点",section:"🏯 王府建筑"},
+{file:"L-P03_02_悬崖回廊反打_v001.png",name:"悬崖回廊 · 反打",script:"回廊反打——崖外冷月、廊内深黑",section:"🏯 王府建筑"},
+{file:"L-P04_01_白狐正堂中轴_v001.png",name:"白狐正堂 · 中轴",script:"中轴冷顶光——柱列深黑、祖灯低位暖点",section:"🏯 王府建筑"},
+{file:"L-P04_02_王座大厅主向_v001.png",name:"王座大厅 · 主向",script:"主向冷光——巨柱、九尾屏风沉入阴影",section:"🏯 王府建筑"},
+{file:"L-P04_03_王府宴会厅长案_v001.png",name:"宴会厅 · 长案",script:"长案冷光——柱屏暗刻九尾纹隐现",section:"🏯 王府建筑"},
+{file:"L-P05_01_屋脊夜雪主向_v001.png",name:"屋脊夜雪 · 主向",script:"8:1–12:1 深蓝夜雪——屋脊、峡谷与月位",section:"🏯 王府建筑"},
+{file:"L-P05_02_屋脊夜雪反打_v001.png",name:"屋脊夜雪 · 反打",script:"同一冷月世界反打——月缘、雪瓦高光、低暖灯",section:"🏯 王府建筑"},
+{file:"L-P05_03_屋脊踏冰细节_v001.png",name:"屋脊踏冰 · 细节",script:"黑瓦、薄冰、积雪斜月分层——赤足踏冰动作区",section:"🏯 王府建筑"},
+{file:"L-P05_04_绝壁飞廊主向_v001.png",name:"绝壁飞廊 · 主向",script:"雪夜动作家族——左后高月锁栈道与崖缘",section:"🏯 王府建筑"},
+{file:"L-P06_01_王府灶房主向_v001.png",name:"灶房 · 主向",script:"灶火暖光与窗外冷月双源——烟火气光比",section:"🏯 王府建筑"},
+{file:"L-P07_01_山体洞厅主向_v001.png",name:"山体洞厅 · 主向",script:"天井冷光垂落——洞厅深黑、古桥剪影",section:"🏯 王府建筑"},
+
+// ═══ ⛩️ 祖祠系统 ═══
+{file:"L-A01_01_祖祠前道巨印_v001.png",name:"祖祠前道 · 巨印",script:"冷月锁崖壁古印——石灯路径、峡谷深黑",section:"⛩️ 祖祠系统"},
+{file:"L-A01_02_祖祠外部关系主向_v001.png",name:"祖祠外部 · 主向",script:"雪山压迫、小祖祠一点灯火——山体主体",section:"⛩️ 祖祠系统"},
+{file:"L-A01_03_祖祠山体关系总母版_v001.png",name:"山体关系 · 总母版",script:"山与祖祠比例锁定——冷月、蓝灰雪雾",section:"⛩️ 祖祠系统"},
+{file:"L-A02_01_祭礼平台主向_v001.png",name:"祭礼平台 · 主向",script:"空场——石兽、圆台、崖壁与石灯，8:1–10:1 黑区",section:"⛩️ 祖祠系统"},
+{file:"L-A02_02_祭礼平台反打_v001.png",name:"祭礼平台 · 反打",script:"同一雪夜反照——双雷兽强阴影切割",section:"⛩️ 祖祠系统"},
+{file:"L-A02_03_祭礼平台雷劫变量_v001.png",name:"祭礼平台 · 雷劫",script:"紫金雷只打平台中心与石兽上缘——后山深黑",section:"⛩️ 祖祠系统"},
+{file:"L-A02_04_弯折祭道反向_v001.png",name:"弯折祭道 · 反向",script:"反打祭道——贴山石阶多次折返",section:"⛩️ 祖祠系统"},
+{file:"L-A02_05_弯折祭道孤影空场_v001.png",name:"弯折祭道 · 孤影空场",script:"空场——石台、孤灯、深谷",section:"⛩️ 祖祠系统"},
+{file:"L-A03_01_祖祠正殿主向_v001.png",name:"祖祠正殿 · 主向",script:"冷顶侧光锁中轴——祖灯低位暖点，柱列 10:1–12:1",section:"⛩️ 祖祠系统"},
+{file:"L-A03_02_祖祠正殿反向_v001.png",name:"祖祠正殿 · 反向",script:"反向——冰冷门洞与低位祖灯双源",section:"⛩️ 祖祠系统"},
+{file:"L-A03_03_侧廊挂轴近景_v001.png",name:"侧廊挂轴 · 近景",script:"挂轴斜向掠光——廊外冷月、廊内深黑",section:"⛩️ 祖祠系统"},
+{file:"L-A05_01_无字祖碑主向_v001.png",name:"无字祖碑 · 主向",script:"碑面冷顶光——黑玉质感高反差",section:"⛩️ 祖祠系统"},
+{file:"L-A05_02_虚无试炼平台主向_v001.png",name:"虚无试炼 · 主向",script:"无尽黑暗——漂浮山体碎片微光",section:"⛩️ 祖祠系统"},
+{file:"L-A05_03_狐祖影子降临变量_v001.png",name:"狐祖影子 · 降临",script:"九尾巨影压迫——不可理解光源",section:"⛩️ 祖祠系统"},
+{file:"L-A06_01_九尾圣域主向_v001.png",name:"九尾圣域 · 主向",script:"九道黑玉岩层尾脉——幽微祖光",section:"⛩️ 祖祠系统"},
+{file:"L-A06_02_九尾巨石近景_v001.png",name:"九尾巨石 · 近景",script:"巨尾岩层低垂——压迫暗部",section:"⛩️ 祖祠系统"},
+{file:"L-A06_03_血脉核心失控_v001.png",name:"血脉核心 · 失控",script:"活性祖源——岩层血脉苏醒光比",section:"⛩️ 祖祠系统"},
+{file:"L-A07_01_祖祠后壁裂隙主向_v001.png",name:"后壁裂隙 · 主向",script:"山裂开——未知微光渗出",section:"⛩️ 祖祠系统"},
+{file:"L-A07_02_九尾百兽壁画火光_v001.png",name:"壁画 · 火光",script:"烛光映照九尾百兽图——暖光与冷墙",section:"⛩️ 祖祠系统"},
+{file:"L-A07_03_影门窄缝变量_v001.png",name:"影门 · 窄缝",script:"狐祖之影裂开为门——冷光裂缝",section:"⛩️ 祖祠系统"},
+{file:"L-A07_04_祖源火主向_v001.png",name:"祖源火 · 主向",script:"黑玉岩层内部血脉源火——非普通火焰",section:"⛩️ 祖祠系统"},
+
+// ═══ 🌩️ 净雷室 ═══
+{file:"L-J01_01_净雷室主向_v001.png",name:"净雷室 · 主向",script:"冷蓝灰——幽蓝狐火微燃、寒池墨黑、四纱垂穹",section:"🌩️ 净雷室"},
+{file:"L-J01_02_净雷室南侧入口_v001.png",name:"净雷室 · 南侧入口",script:"铁木门方向——通道冷光与狐火双源",section:"🌩️ 净雷室"},
+{file:"L-J01_03_净雷室仪式台近景_v001.png",name:"净雷室 · 仪式台近景",script:"低矮黑石台——暗哑玉盏、旧金笔、蓝火微光",section:"🌩️ 净雷室"},
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();
+let secIdx=0;
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);
+const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
+const title=document.createElement("div");title.className="section-title";
+title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${scenes.filter(s=>s.section===sec).length} 板</span></h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";
+gallery.setAttribute("data-section",sec);
+block.appendChild(gallery);
+root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";
+card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+const subnav=document.getElementById("subnav"),sections=[];
+subnav.innerHTML='<div class="subnav-label">光比板分组</div>';
+doneSections.forEach(sec=>{
+  const id="sec-"+sections.length;sections.push({id,sec});
+  const a=document.createElement("a");a.href="#"+id;a.textContent=sec;
+  subnav.appendChild(a);
+});
+function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
+window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
+</script>
+</body>
+</html>
