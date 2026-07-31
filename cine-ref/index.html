@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>摄影视觉参考 · 狐祖归来 EP01《雪夜孤灯》</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:210px;background:linear-gradient(180deg,#0d1025 0%,#0a0d1a 100%);border-right:1px solid rgba(180,160,120,.12);z-index:100;display:flex;flex-direction:column;padding:28px 0 20px}
+.sidebar-brand{padding:0 22px 20px;font-size:18px;letter-spacing:.15em;color:#d4c8a0;text-align:center;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 10px}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px;letter-spacing:.08em;color:rgba(200,180,150,.55);text-decoration:none;border-radius:6px;transition:all .25s}
+.sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
+.sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
+.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-subnav{margin-top:8px;padding:0 10px;border-top:1px solid rgba(180,160,120,.08);overflow-y:auto;flex:1}
+.sidebar-subnav .subnav-label{padding:12px 14px 6px;font-size:11px;letter-spacing:.15em;color:rgba(180,160,120,.3)}
+.sidebar-subnav a{display:flex;align-items:center;gap:6px;padding:5px 14px;font-size:12px;letter-spacing:.05em;color:rgba(180,150,120,.35);text-decoration:none;border-radius:4px;transition:all .2s;margin:1px 0}
+.sidebar-subnav a:hover{color:#c8b890;background:rgba(200,170,120,.04)}
+.sidebar-subnav a.active{color:#d4c8a0;background:rgba(200,170,120,.08);border:1px solid rgba(200,170,120,.15)}
+.sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px;line-height:1}
+.sidebar-toggle:hover{color:rgba(220,190,130,.9)}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.body-wrap{margin-left:210px}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;align-items:start;padding-bottom:8px}
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block}
+.card .label{padding:10px 12px;font-size:12px;color:rgba(180,160,120,.4);letter-spacing:.04em;text-align:center}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px}
+.lightbox .lb-info{margin-top:18px;font-size:16px;color:rgba(215,200,170,.75);text-align:center}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px;font-size:13px;color:rgba(150,130,90,.35);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
+  .body-wrap{margin-left:0}.gallery{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">狐祖 · 场景</div>
+  <div class="sidebar-nav">
+    <a href="../"><span class="nav-icon">🏠</span> 首页</a>
+    <a href="../qingqiu-kingdom/"><span class="nav-icon">🏯</span> 青丘王府</a>
+    <a href="../qingqiu-shrine/"><span class="nav-icon">⛩️</span> 青丘祖祠</a>
+    <a href="../light-ratio/"><span class="nav-icon">💡</span> 光比图</a>
+    <a href="./" class="active"><span class="nav-icon">🎬</span> 摄影参考</a>
+  </div>
+  <div class="sidebar-subnav" id="subnav"></div>
+</nav>
+
+<div class="body-wrap">
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · EP01</p>
+  <h1>摄 影 视 觉 参 考</h1>
+  <p class="subtitle">影片级光影与构图参考 · The Northman / Nightmare Alley / The Green Knight / The Shape of Water</p>
+</header>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">&times;</span>
+  <span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">狐 祖 归 来 · 摄 影 视 觉 参 考 · 影 片 级 光 影 构 图</div>
+
+</div>
+
+<script>
+const films={
+  "The Northman":{cn:"北欧人",year:"2022",dir:"Robert Eggers",note:"冷峻史诗·自然光·维京暗黑美学"},
+  "Nightmare Alley":{cn:"玉面情魔",year:"2021",dir:"Guillermo del Toro",note:"暗色调·伦勃朗光·黑色电影"},
+  "The Green Knight":{cn:"绿衣骑士",year:"2021",dir:"David Lowery",note:"中世纪奇幻·自然主义·雾气氛围"},
+  "The Shape of Water":{cn:"水形物语",year:"2017",dir:"Guillermo del Toro",note:"青绿水下光·湿润质感·暗浪漫"}
+};
+
+const scenes=[];
+const files=[
+"1 - The Northman.jpg","2 - The Northman.jpg","3 - The Northman.jpg","4 - The Northman.jpg","5 - The Northman.jpg","6 - The Northman.jpg","7 - The Northman.jpg","8 - The Northman.jpg","9 - The Northman.jpg","10 - The Northman.jpg","11 - The Northman.jpg","12 - The Northman.jpg","13 - The Northman.jpg","14 - The Northman.jpg","15 - The Northman.jpg","16 - The Northman.jpg","17 - The Northman.jpg","18 - The Northman.jpg","19 - The Northman.jpg","20 - The Northman.jpg","21 - The Northman.jpg","22 - The Northman.jpg","23 - The Northman.jpg","24 - The Northman.jpg","25 - The Northman.jpg","26 - The Northman.jpg","27 - The Northman.jpg","28 - The Northman.jpg","29 - The Northman.jpg","30 - The Northman.jpg","31 - The Northman.jpg","32 - The Northman.jpg","33 - The Northman.jpg","34 - The Northman.jpg","35 - The Northman.jpg","36 - The Northman.jpg","37 - The Northman.jpg","38 - The Northman.jpg","39 - The Northman.jpg","40 - The Northman.jpg","41 - The Northman.jpg",
+"42 - Nightmare Alley.jpg","43 - Nightmare Alley.jpg","44 - Nightmare Alley.jpg","45 - Nightmare Alley.jpg","46 - Nightmare Alley.jpg","47 - Nightmare Alley.jpg","48 - Nightmare Alley.jpg","49 - Nightmare Alley.jpg","50 - Nightmare Alley.jpg","51 - Nightmare Alley.jpg","52 - Nightmare Alley.jpg","53 - Nightmare Alley.jpg","54 - Nightmare Alley.jpg","55 - Nightmare Alley.jpg","56 - Nightmare Alley.jpg","57 - Nightmare Alley.jpg","58 - Nightmare Alley.jpg","59 - Nightmare Alley.jpg","60 - Nightmare Alley.jpg","61 - Nightmare Alley.jpg","62 - Nightmare Alley.jpg","63 - Nightmare Alley.jpg","64 - Nightmare Alley.jpg","65 - Nightmare Alley.jpg","66 - Nightmare Alley.jpg","67 - Nightmare Alley.jpg","68 - Nightmare Alley.jpg","69 - Nightmare Alley.jpg","70 - Nightmare Alley.jpg","71 - Nightmare Alley.jpg","72 - Nightmare Alley.jpg","73 - Nightmare Alley.jpg",
+"74 - The Green Knight.jpg","75 - The Green Knight.jpg","76 - The Green Knight.jpg","77 - The Green Knight.jpg","78 - The Green Knight.jpg","79 - The Green Knight.jpg","80 - The Green Knight.jpg","81 - The Green Knight.jpg","82 - The Green Knight.jpg","83 - The Green Knight.jpg","84 - The Green Knight.jpg","85 - The Green Knight.jpg","86 - The Green Knight.jpg","87 - The Green Knight.jpg","88 - The Green Knight.jpg","89 - The Green Knight.jpg","90 - The Green Knight.jpg","91 - The Green Knight.jpg","92 - The Green Knight.jpg","93 - The Green Knight.jpg","94 - The Green Knight.jpg","95 - The Green Knight.jpg","96 - The Green Knight.jpg","97 - The Green Knight.jpg","98 - The Green Knight.jpg","99 - The Green Knight.jpg","100 - The Green Knight.jpg","101 - The Green Knight.jpg","102 - The Green Knight.jpg","103 - The Green Knight.jpg","104 - The Green Knight.jpg","105 - The Green Knight.jpg","106 - The Green Knight.jpg","107 - The Green Knight.jpg","108 - The Green Knight.jpg","109 - The Green Knight.jpg",
+"110 - The Shape of Water.jpg","111 - The Shape of Water.jpg","112 - The Shape of Water.jpg","113 - The Shape of Water.jpg","114 - The Shape of Water.jpg","115 - The Shape of Water.jpg","116 - The Shape of Water.jpg","117 - The Shape of Water.jpg","118 - The Shape of Water.jpg","119 - The Shape of Water.jpg","120 - The Shape of Water.jpg","121 - The Shape of Water.jpg","122 - The Shape of Water.jpg","123 - The Shape of Water.jpg","124 - The Shape of Water.jpg","125 - The Shape of Water.jpg","126 - The Shape of Water.jpg","127 - The Shape of Water.jpg","128 - The Shape of Water.jpg","129 - The Shape of Water.jpg","130 - The Shape of Water.jpg","131 - The Shape of Water.jpg","132 - The Shape of Water.jpg","133 - The Shape of Water.jpg","134 - The Shape of Water.jpg","135 - The Shape of Water.jpg","136 - The Shape of Water.jpg","137 - The Shape of Water.jpg",
+];
+
+files.forEach(f=>{
+  const m=f.match(/ - (.+)\.jpg$/);
+  if(!m)return;
+  const film=m[1],info=films[film]||{cn:film};
+  scenes.push({
+    file:encodeURI(f),
+    name:info.cn||film,
+    script:info.year+" · "+info.dir+" · "+info.note,
+    section:"🎬 "+film
+  });
+});
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();
+let secIdx=0;
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);
+const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
+const title=document.createElement("div");title.className="section-title";
+const count=scenes.filter(s=>s.section===sec).length;
+const info=films[sec.replace("🎬 ","")];
+title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${count} 帧</span></h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";gallery.setAttribute("data-section",sec);
+block.appendChild(gallery);
+root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label">${sc.name} · ${(i%41)+1}</div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+const subnav=document.getElementById("subnav"),sections=[];
+subnav.innerHTML='<div class="subnav-label">影片分组</div>';
+doneSections.forEach(sec=>{
+  const id="sec-"+sections.length;sections.push({id,sec});
+  const a=document.createElement("a");a.href="#"+id;a.textContent=sec.replace("🎬 ","");
+  subnav.appendChild(a);
+});
+function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
+window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbInfo.innerHTML=`<b>${s.name}</b> · ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
+</script>
+</body>
+</html>
