@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>摄影视觉参考 · 狐祖归来 EP01《雪夜孤灯》</title>
+<title>分镜故事板 · 狐祖归来 EP01 祖祠高潮</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -27,9 +27,9 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 
 .hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
-.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero h1{position:relative;font-size:clamp(36px,6vw,56px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
 .hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
-.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+.hero .subtitle{position:relative;font-size:14px;letter-spacing:.2em;color:rgba(190,160,120,.45)}
 
 .section-block{max-width:1400px;margin:0 auto;padding:0 24px}
 .section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
@@ -37,17 +37,20 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
 .section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;align-items:start;padding-bottom:8px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:24px;align-items:start;padding-bottom:8px}
 .card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .2s}
 .card:hover{transform:translateY(-3px);border-color:rgba(180,140,80,.4)}
 .card .img-container{width:100%;overflow:hidden;background:#0a0d16}
-.card .img-container img{width:100%;height:auto;display:block}
-.card .label{padding:10px 12px;font-size:12px;color:rgba(180,160,120,.4);letter-spacing:.04em;text-align:center}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .4s}
+.card:hover img{transform:scale(1.02)}
+.card .label{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em}
+.card .label .scene-script{font-size:13px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.6;text-align:right}
 
 .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
 .lightbox.active{display:flex}
-.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px}
-.lightbox .lb-info{margin-top:18px;font-size:16px;color:rgba(215,200,170,.75);text-align:center}
+.lightbox img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:4px}
+.lightbox .lb-info{margin-top:14px;font-size:15px;color:rgba(215,200,170,.75);text-align:center;max-width:700px}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;z-index:1001}
 .lb-nav:hover{color:rgba(230,215,180,.9)}
 .lb-prev{left:20px}.lb-next{right:20px}
@@ -58,7 +61,7 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
   .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
-  .body-wrap{margin-left:0}.gallery{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .body-wrap{margin-left:0}.gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -74,8 +77,8 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
     <a href="../qingqiu-kingdom/"><span class="nav-icon">🏯</span> 青丘王府</a>
     <a href="../qingqiu-shrine/"><span class="nav-icon">⛩️</span> 青丘祖祠</a>
     <a href="../light-ratio/"><span class="nav-icon">💡</span> 光比图</a>
-    <a href="../storyboard/"><span class="nav-icon">🎞️</span> 分镜板</a>
-    <a href="./" class="active"><span class="nav-icon">🎬</span> 摄影参考</a>
+    <a href="../cine-ref/"><span class="nav-icon">🎬</span> 摄影参考</a>
+    <a href="./" class="active"><span class="nav-icon">🎞️</span> 分镜板</a>
   </div>
   <div class="sidebar-subnav" id="subnav"></div>
 </nav>
@@ -83,9 +86,9 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 <div class="body-wrap">
 
 <header class="hero">
-  <p class="ep-title">狐祖归来 · EP01</p>
-  <h1>摄 影 视 觉 参 考</h1>
-  <p class="subtitle">影片级光影与构图参考 · The Northman / Nightmare Alley / The Green Knight / The Shape of Water</p>
+  <p class="ep-title">狐祖归来 · EP01 · 祖祠高潮</p>
+  <h1>分 镜 故 事 板</h1>
+  <p class="subtitle">MV-S027–MV-S045 · 19镜 · 三格A→B→C · WIP审阅版</p>
 </header>
 
 <div id="content-root"></div>
@@ -97,37 +100,44 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
   <div class="lb-info" id="lbInfo"></div>
   <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
 </div>
-<div class="footer">狐 祖 归 来 · 摄 影 视 觉 参 考 · 影 片 级 光 影 构 图</div>
+<div class="footer">狐 祖 归 来 · 祖 祠 高 潮 · 分 镜 故 事 板 · WIP 审 阅 版</div>
 
 </div>
 
 <script>
-const films={
-  "The Northman":{cn:"北欧人",year:"2022",dir:"Robert Eggers",note:"冷峻史诗·自然光·维京暗黑美学"},
-  "Nightmare Alley":{cn:"玉面情魔",year:"2021",dir:"Guillermo del Toro",note:"暗色调·伦勃朗光·黑色电影"},
-  "The Green Knight":{cn:"绿衣骑士",year:"2021",dir:"David Lowery",note:"中世纪奇幻·自然主义·雾气氛围"},
-  "The Shape of Water":{cn:"水形物语",year:"2017",dir:"Guillermo del Toro",note:"青绿水下光·湿润质感·暗浪漫"}
-};
+const scenes=[
+// ═══ 总览 ═══
+{file:"00_19镜故事板总览_WIP.jpg",name:"19镜总览 · 一页全览",script:"MV-S027→MV-S045 完整故事板总览——影门→虚无试炼→狐祖降临→九尾圣域→血脉觉醒→竖瞳→神域裂隙→降临→九尾虚空",section:"📋 总览",wide:true},
 
-const scenes=[];
-const files=[
-"1 - The Northman.jpg","2 - The Northman.jpg","3 - The Northman.jpg","4 - The Northman.jpg","5 - The Northman.jpg","6 - The Northman.jpg","7 - The Northman.jpg","8 - The Northman.jpg","9 - The Northman.jpg","10 - The Northman.jpg","11 - The Northman.jpg","12 - The Northman.jpg","13 - The Northman.jpg","14 - The Northman.jpg","15 - The Northman.jpg","16 - The Northman.jpg","17 - The Northman.jpg","18 - The Northman.jpg","19 - The Northman.jpg","20 - The Northman.jpg","21 - The Northman.jpg","22 - The Northman.jpg","23 - The Northman.jpg","24 - The Northman.jpg","25 - The Northman.jpg","26 - The Northman.jpg","27 - The Northman.jpg","28 - The Northman.jpg","29 - The Northman.jpg","30 - The Northman.jpg","31 - The Northman.jpg","32 - The Northman.jpg","33 - The Northman.jpg","34 - The Northman.jpg","35 - The Northman.jpg","36 - The Northman.jpg","37 - The Northman.jpg","38 - The Northman.jpg","39 - The Northman.jpg","40 - The Northman.jpg","41 - The Northman.jpg",
-"42 - Nightmare Alley.jpg","43 - Nightmare Alley.jpg","44 - Nightmare Alley.jpg","45 - Nightmare Alley.jpg","46 - Nightmare Alley.jpg","47 - Nightmare Alley.jpg","48 - Nightmare Alley.jpg","49 - Nightmare Alley.jpg","50 - Nightmare Alley.jpg","51 - Nightmare Alley.jpg","52 - Nightmare Alley.jpg","53 - Nightmare Alley.jpg","54 - Nightmare Alley.jpg","55 - Nightmare Alley.jpg","56 - Nightmare Alley.jpg","57 - Nightmare Alley.jpg","58 - Nightmare Alley.jpg","59 - Nightmare Alley.jpg","60 - Nightmare Alley.jpg","61 - Nightmare Alley.jpg","62 - Nightmare Alley.jpg","63 - Nightmare Alley.jpg","64 - Nightmare Alley.jpg","65 - Nightmare Alley.jpg","66 - Nightmare Alley.jpg","67 - Nightmare Alley.jpg","68 - Nightmare Alley.jpg","69 - Nightmare Alley.jpg","70 - Nightmare Alley.jpg","71 - Nightmare Alley.jpg","72 - Nightmare Alley.jpg","73 - Nightmare Alley.jpg",
-"74 - The Green Knight.jpg","75 - The Green Knight.jpg","76 - The Green Knight.jpg","77 - The Green Knight.jpg","78 - The Green Knight.jpg","79 - The Green Knight.jpg","80 - The Green Knight.jpg","81 - The Green Knight.jpg","82 - The Green Knight.jpg","83 - The Green Knight.jpg","84 - The Green Knight.jpg","85 - The Green Knight.jpg","86 - The Green Knight.jpg","87 - The Green Knight.jpg","88 - The Green Knight.jpg","89 - The Green Knight.jpg","90 - The Green Knight.jpg","91 - The Green Knight.jpg","92 - The Green Knight.jpg","93 - The Green Knight.jpg","94 - The Green Knight.jpg","95 - The Green Knight.jpg","96 - The Green Knight.jpg","97 - The Green Knight.jpg","98 - The Green Knight.jpg","99 - The Green Knight.jpg","100 - The Green Knight.jpg","101 - The Green Knight.jpg","102 - The Green Knight.jpg","103 - The Green Knight.jpg","104 - The Green Knight.jpg","105 - The Green Knight.jpg","106 - The Green Knight.jpg","107 - The Green Knight.jpg","108 - The Green Knight.jpg","109 - The Green Knight.jpg",
-"110 - The Shape of Water.jpg","111 - The Shape of Water.jpg","112 - The Shape of Water.jpg","113 - The Shape of Water.jpg","114 - The Shape of Water.jpg","115 - The Shape of Water.jpg","116 - The Shape of Water.jpg","117 - The Shape of Water.jpg","118 - The Shape of Water.jpg","119 - The Shape of Water.jpg","120 - The Shape of Water.jpg","121 - The Shape of Water.jpg","122 - The Shape of Water.jpg","123 - The Shape of Water.jpg","124 - The Shape of Water.jpg","125 - The Shape of Water.jpg","126 - The Shape of Water.jpg","127 - The Shape of Water.jpg","128 - The Shape of Water.jpg","129 - The Shape of Water.jpg","130 - The Shape of Water.jpg","131 - The Shape of Water.jpg","132 - The Shape of Water.jpg","133 - The Shape of Water.jpg","134 - The Shape of Water.jpg","135 - The Shape of Water.jpg","136 - The Shape of Water.jpg","137 - The Shape of Water.jpg",
+// ═══ 影门→试炼→降临 ═══
+{file:"MV-S027_T35a生门·影门_三格故事板_WIP.png",name:"S027 · 生门·影门",script:"T35a — 影自身裂开为门，裂缝指向现实祖祠",section:"🌑 影门→试炼→降临"},
+{file:"MV-S028_T35b虚无试炼_三格故事板_WIP.png",name:"S028 · 虚无试炼",script:"T35b — 脱离现实物理的无尽黑暗，漂浮山体碎片与冻结时间",section:"🌑 影门→试炼→降临"},
+{file:"MV-S029_T35c狐祖影子降临_三格故事板_WIP.png",name:"S029 · 狐祖影子降临",script:"T35c — 不可理解的九尾巨影先于实体抵达",section:"🌑 影门→试炼→降临"},
+
+// ═══ 九尾圣域 ═══
+{file:"MV-S030_T36a九尾圣域显现_三格故事板_WIP.png",name:"S030 · 九尾圣域显现",script:"T36a — 九道巨型黑色岩层尾脉构成狐祖本体空间",section:"🦊 九尾圣域"},
+{file:"MV-S031_T36b九尾巨石近景_三格故事板_WIP.png",name:"S031 · 九尾巨石近景",script:"T36b — 黑玉碎岩道逼近祖源，巨尾岩层低垂",section:"🦊 九尾圣域"},
+{file:"MV-S032_T36c血脉核心觉醒_三格故事板_WIP.png",name:"S032 · 血脉核心觉醒",script:"T36c — 九尾汇聚处活性祖源，岩层血脉苏醒",section:"🦊 九尾圣域"},
+
+// ═══ 祖碑与觉醒 ═══
+{file:"MV-S033_T37祖碑裂竖缝_三格故事板_WIP.png",name:"S033 · 祖碑裂竖缝",script:"T37 — 无字祖碑裂开竖缝，圣域态显化",section:"⚡ 祖碑与觉醒"},
+{file:"MV-S034_T38血脉觉醒材质_三格故事板_WIP.png",name:"S034 · 血脉觉醒材质",script:"T38 — 岩层血脉纹理苏醒，黑玉活化",section:"⚡ 祖碑与觉醒"},
+{file:"MV-S035_T39雪娘尺度验证_三格故事板_WIP.png",name:"S035 · 雪娘尺度验证",script:"T39 — 雪娘仅作微小比例点，被圣域吞没",section:"⚡ 祖碑与觉醒"},
+{file:"MV-S036_祖祠孤灯复燃_三格故事板_WIP.png",name:"S036 · 祖祠孤灯复燃",script:"祖祠长明灯序列全部复燃——祖源觉醒信号",section:"⚡ 祖碑与觉醒"},
+
+// ═══ 狐祖显形 ═══
+{file:"MV-S037_九尾百兽图睁眼_三格故事板_WIP.png",name:"S037 · 九尾百兽图睁眼",script:"壁画中央九尾白狐睁眼——百兽同时苏醒",section:"🔥 狐祖显形"},
+{file:"MV-S038_金色兽爪_三格故事板_WIP.png",name:"S038 · 金色兽爪",script:"祖源火中伸出金色兽爪——非血肉，是祖脉显形",section:"🔥 狐祖显形"},
+{file:"MV-S039_狐耳显形_三格故事板_WIP.png",name:"S039 · 狐耳显形",script:"雪娘头顶狐耳由虚转实——血脉觉醒体征",section:"🔥 狐祖显形"},
+{file:"MV-S040_竖瞳接通_三格故事板_WIP.png",name:"S040 · 竖瞳接通",script:"雪娘瞳孔裂变竖瞳——千年祖脉接通",section:"🔥 狐祖显形"},
+
+// ═══ 降临 ═══
+{file:"MV-S041_神域裂隙回到现实_三格故事板_WIP.png",name:"S041 · 神域裂隙回到现实",script:"圣域裂隙倒映现实祖祠——两个空间接通",section:"✨ 降临"},
+{file:"MV-S042_降临者跨出裂隙_三格故事板_WIP.png",name:"S042 · 降临者跨出裂隙",script:"降临者从裂隙跨回现实——狐祖姿态",section:"✨ 降临"},
+{file:"MV-S043_群体低首_三格故事板_WIP.png",name:"S043 · 群体低首",script:"祭礼平台所有狐族低首——至高血脉压制",section:"✨ 降临"},
+{file:"MV-S044_九尾暗影起身_三格故事板_WIP.png",name:"S044 · 九尾暗影起身",script:"暗影九尾从地面起身——巨物压迫感",section:"✨ 降临"},
+{file:"MV-S045_九尾遮蔽虚空_三格故事板_WIP.png",name:"S045 · 九尾遮蔽虚空",script:"九尾完全伸展开，遮蔽整个虚空——狐祖归来",section:"✨ 降临"},
 ];
-
-files.forEach(f=>{
-  const m=f.match(/ - (.+)\.jpg$/);
-  if(!m)return;
-  const film=m[1],info=films[film]||{cn:film};
-  scenes.push({
-    file:encodeURI(f),
-    name:info.cn||film,
-    script:info.year+" · "+info.dir+" · "+info.note,
-    section:"🎬 "+film
-  });
-});
 
 const root=document.getElementById("content-root");
 const doneSections=new Set();
@@ -139,27 +149,22 @@ doneSections.add(sec);
 const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
 const title=document.createElement("div");title.className="section-title";
 const count=scenes.filter(s=>s.section===sec).length;
-const info=films[sec.replace("🎬 ","")];
-title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${count} 帧</span></h2><div class="line"></div>`;
+title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${count} 镜</span></h2><div class="line"></div>`;
 block.appendChild(title);
 const gallery=document.createElement("div");gallery.className="gallery";gallery.setAttribute("data-section",sec);
 block.appendChild(gallery);
 root.appendChild(block);
 }
 const gal=root.querySelector(`[data-section="${sec}"]`);
-const card=document.createElement("div");card.className="card";card.setAttribute("data-index",i);
-card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label">${sc.name} · ${(i%41)+1}</div>`;
+const card=document.createElement("div");card.className="card";if(sc.wide)card.classList.add("wide-card");card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div>`;
 card.addEventListener("click",()=>openLightbox(i));
 gal.appendChild(card);
 });
 
 const subnav=document.getElementById("subnav"),sections=[];
-subnav.innerHTML='<div class="subnav-label">影片分组</div>';
-doneSections.forEach(sec=>{
-  const id="sec-"+sections.length;sections.push({id,sec});
-  const a=document.createElement("a");a.href="#"+id;a.textContent=sec.replace("🎬 ","");
-  subnav.appendChild(a);
-});
+subnav.innerHTML='<div class="subnav-label">场次分组</div>';
+doneSections.forEach(sec=>{const id="sec-"+sections.length;sections.push({id,sec});const a=document.createElement("a");a.href="#"+id;a.textContent=sec;subnav.appendChild(a)});
 function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
 window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
 
