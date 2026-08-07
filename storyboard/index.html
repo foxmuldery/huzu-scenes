@@ -139,6 +139,26 @@ const scenes=[
 {file:"MV-S045_九尾遮蔽虚空_三格故事板_WIP.png",name:"S045 · 九尾遮蔽虚空",script:"九尾完全伸展开，遮蔽整个虚空——狐祖归来",section:"✨ 降临"},
 ];
 
+// ═══ R04 文戏分镜（2026-08-07 新增）═══
+const extraScenes=[
+// ── 雪庭审判 R04A ──
+{file:"R04A-SH01_吊青禾石案三药.png",name:"R04A-SH01 · 吊青禾石案三药",script:"雪庭审判全景——青禾被镇狐索吊起悬空、黑石案三粒冰蓝药、王嵩案后、雪娘提油壶入庭。极慢中轴推进",section:"❄️ 雪庭审判 R04A"},
+{file:"R04A-SH02_审问与自认.png",name:"R04A-SH02 · 审问与自认",script:"王嵩审问「谁给你指的引水道？」青禾「我自己找到的。」玄晏「第三盏灯外的铜踏钉，只有守灯人知道。」",section:"❄️ 雪庭审判 R04A"},
+{file:"R04A-SH03_捏碎药青禾挣扎.png",name:"R04A-SH03 · 捏碎药青禾挣扎",script:"王嵩捏碎寒骨药扔入雪中化蓝雾——青禾挣扎嘶喊「小枝。寒毒已经过腕——她只是个孩子！」",section:"❄️ 雪庭审判 R04A"},
+{file:"R04A-SH04_猫暴露看见玄晏炸毛.png",name:"R04A-SH04 · 猫暴露·看见玄晏炸毛",script:"猫从袖中跌出→看见玄晏瞳孔骤缩炸毛→雪地倒影白狐尾→雪娘抢回按住眼睛。猫眼照狐",section:"❄️ 雪庭审判 R04A"},
+{file:"R04A-SH05_猫眼照狐与宣判.png",name:"R04A-SH05 · 猫眼照狐与宣判",script:"「猫眼照狐，青丘禁猫。你不知道？」「知道。」「还敢救？」「瓦压下来时，它没地方躲。」——三十冰鞭逐出祖祠",section:"❄️ 雪庭审判 R04A"},
+{file:"R04A-SH06_玄晏止刑押回刑堂.png",name:"R04A-SH06 · 玄晏止刑押回刑堂",script:"「祭礼前不宜见血。」「青禾押回刑堂。罪妇王氏，先记着。」青禾被拖过看见药屑，雪娘合拢手",section:"❄️ 雪庭审判 R04A"},
+// ── 正堂签契 R04B ──
+{file:"R04B-SH01_雪娘月白祭服入堂.png",name:"R04B-SH01 · 雪娘月白祭服入堂",script:"雪娘换月白祭服入正堂——长案族谱/黑木匣/旧牌位，王嵩案后。中轴对称",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH02_开黑木匣青玉环.png",name:"R04B-SH02 · 开黑木匣青玉环",script:"狐侍开黑木匣——青玉环内极细雷纹游动，雪娘看着不伸手",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH03_替雷交易说明_修正版.png",name:"R04B-SH03 · 替雷交易说明",script:"「戴上青玉环，捧祖灯走进祖祠…三道雷过。你若还活着，门自然会开。」雪娘「我若撑不到第三道呢？」",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH04_玄晏修为尽毁.png",name:"R04B-SH04 · 玄晏：修为尽毁",script:"「剩下的雷会回到我身上。飞升作废，二十年修为尽毁。」长焦双层对视",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH05_威胁沉猫断尾.png",name:"R04B-SH05 · 威胁：沉猫断尾",script:"「天亮沉猫。阿檀断尾逐出青丘…你若仍不去，我便从守灯旁支另选一个，你还有兄弟姊妹。」",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH06_看牌位看玄晏.png",name:"R04B-SH06 · 看牌位，看玄晏",script:"雪娘看母亲牌位、又看向沉默的玄晏——决定前最后一瞬",section:"🏛️ 正堂签契 R04B"},
+{file:"R04B-SH07_指尖按印锁青玉环.png",name:"R04B-SH07 · 指尖按印画押·锁青玉环",script:"指尖一次按印（不用朱砂笔）——暗金祖印浮现，狐侍锁青玉环，雷纹骤亮",section:"🏛️ 正堂签契 R04B"},
+];
+scenes.push(...extraScenes);
+
 const root=document.getElementById("content-root");
 const doneSections=new Set();
 let secIdx=0;
