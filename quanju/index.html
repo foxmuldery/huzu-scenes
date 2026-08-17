@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全剧场景母版 · 狐祖归来 · 东方自然废墟文明</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:210px;background:linear-gradient(180deg,#0d1025 0%,#0a0d1a 100%);border-right:1px solid rgba(180,160,120,.12);z-index:100;display:flex;flex-direction:column;padding:28px 0 20px}
+.sidebar-brand{padding:0 22px 20px;font-size:16px;letter-spacing:.15em;color:#d4c8a0;text-align:center;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 10px}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px;letter-spacing:.08em;color:rgba(200,180,150,.55);text-decoration:none;border-radius:6px;transition:all .25s}
+.sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
+.sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
+.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-subnav{margin-top:8px;padding:0 10px;border-top:1px solid rgba(180,160,120,.08);overflow-y:auto;flex:1}
+.sidebar-subnav .subnav-label{padding:12px 14px 6px;font-size:11px;letter-spacing:.15em;color:rgba(180,160,120,.3)}
+.sidebar-subnav a{display:flex;align-items:center;gap:6px;padding:5px 14px;font-size:12px;letter-spacing:.05em;color:rgba(180,150,120,.35);text-decoration:none;border-radius:4px;transition:all .2s;margin:1px 0}
+.sidebar-subnav a:hover{color:#c8b890;background:rgba(200,170,120,.04)}
+.sidebar-subnav a.active{color:#d4c8a0;background:rgba(200,170,120,.08);border:1px solid rgba(200,170,120,.15)}
+.badge{padding:1px 6px;font-size:10px;letter-spacing:.1em;background:rgba(140,170,150,.15);color:#8caa98;border-radius:3px;margin-left:4px}
+.sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.body-wrap{margin-left:210px}
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(32px,5vw,52px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55)}
+.hero .subtitle{position:relative;font-size:14px;letter-spacing:.2em;color:rgba(190,160,120,.45);margin-top:10px}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:28px;align-items:start;padding-bottom:8px}
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s}
+.card:hover{transform:translateY(-3px);border-color:rgba(180,140,80,.4);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .4s}
+.card:hover img{transform:scale(1.02)}
+.card .label{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:15px;color:#d4c8a8;letter-spacing:.05em}
+.card .label .scene-script{font-size:12px;color:rgba(210,190,160,.55);line-height:1.6;text-align:right;max-width:55%}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:4px}
+.lightbox .lb-info{margin-top:14px;font-size:15px;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.6}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px;font-size:13px;color:rgba(150,130,90,.35);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
+  .body-wrap{margin-left:0}.gallery{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">狐祖 · 全剧<span class="badge">母版</span></div>
+  <div class="sidebar-nav">
+    <a href="../"><span class="nav-icon">🏠</span> 首页 V1</a>
+    <a href="../huzu-v3/"><span class="nav-icon">🏯</span> 场景 V3</a>
+    <a href="./" class="active"><span class="nav-icon">🗺️</span> 全剧母版</a>
+  </div>
+  <div class="sidebar-subnav" id="subnav"></div>
+</nav>
+
+<div class="body-wrap">
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · 全剧</p>
+  <h1>场 景 母 版</h1>
+  <p class="subtitle">东方自然废墟文明 · 45 场景 · 宋代遗迹被自然吞没 · 狐族继承与生存</p>
+</header>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">&times;</span>
+  <span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">狐 祖 归 来 · 全 剧 场 景 母 版 · 东 方 自 然 废 墟 文 明</div>
+
+</div>
+
+<script>
+const scenes=[
+// ═══ 白狐雪山遗迹 01-10 ═══
+{file:"01_白狐雪山遗城总览_v01.png",name:"01 · 白狐雪山遗城总览",script:"对山高位俯瞰黑岩与雪山之间的宋代遗城，层叠木石殿宇、跨谷栈道、冰川裂谷被风雪吞没，极少暖铜灯火",section:"🏔️ 白狐雪山遗迹"},
+{file:"02_白狐王城入口_v01.png",name:"02 · 白狐王城入口",script:"狭长石桥跨越冰封深渊，通向嵌入两面黑崖之间的残破门楼，建筑尺度被山体压制",section:"🏔️ 白狐雪山遗迹"},
+{file:"03_白狐王庭远景_v01.png",name:"03 · 白狐王庭远景",script:"巨型天然山体剧场包围不对称雪庭与克制木殿，权力来自山体、空场和历史",section:"🏔️ 白狐雪山遗迹"},
+{file:"04_白狐正堂遗迹_v01.png",name:"04 · 白狐正堂遗迹",script:"正堂一侧完全被黑色岩壁和垂冰侵入，低石台代替王座，顶缝冷光落在湿润石地",section:"🏔️ 白狐雪山遗迹"},
+{file:"05_冰封长廊_v01.png",name:"05 · 冰封长廊",script:"沿雪山深渊展开的巡防长廊，木柱、残墙、冰层与灯龛形成强透视和交替明暗",section:"🏔️ 白狐雪山遗迹"},
+{file:"06_净雷空间_v01.png",name:"06 · 净雷空间",script:"从狭窄下降通道进入巨大的山体净化圣所，黑石水池、垂直水源、低雾与岩壁占据主体",section:"🏔️ 白狐雪山遗迹"},
+{file:"07_白狐祖庭_v01.png",name:"07 · 白狐祖庭",script:"阶梯石台围绕一块因水蚀而隐约呈九尾形态的苍白巨石，宋代屋构只残留洞壁边缘",section:"🏔️ 白狐雪山遗迹"},
+{file:"08_雪山巡卫峡谷_v01.png",name:"08 · 雪山巡卫峡谷",script:"黑崖、暴雪、信号塔和绳桥构成外防巡逻路线，功能性、危险高差和白茫边界",section:"🏔️ 白狐雪山遗迹"},
+{file:"09_冰川书库_v01.png",name:"09 · 冰川书库",script:"木石档案架被推进的蓝白冰层包围，卷册、木牍和封箱在冰层过滤的自然光中保存",section:"🏔️ 白狐雪山遗迹"},
+{file:"10_雪山祭坛_v01.png",name:"10 · 雪山祭坛",script:"九块风蚀立石围绕山顶低矮石台，风暴天空与群山占据画面大部，不出现可见法术",section:"🏔️ 白狐雪山遗迹"},
+
+// ═══ 青丘王府 11-20 ═══
+{file:"11_青丘王府遗城总览_v01.png",name:"11 · 青丘王府遗城总览",script:"较低海拔的山盆地王府，松林、苔藓、碎雪与局部修补的木石建筑共存，遗迹中的生活孤岛",section:"🏯 青丘王府"},
+{file:"12_王府入口跨谷桥_v01.png",name:"12 · 王府入口跨谷桥",script:"湿冷峡谷上只有一条石木混合长桥，通向树林和崖壁包围的克制门楼",section:"🏯 青丘王府"},
+{file:"13_守灯长廊_v01.png",name:"13 · 守灯长廊",script:"蓝调时刻的长廊，间隔不一的铜灯形成脆弱暖线，工具、油罐和修补地面体现日常守灯",section:"🏯 青丘王府"},
+{file:"14_雪庭_v01.png",name:"14 · 雪庭",script:"巨松根系抬起庭院石板，碎雪与清扫路径并置，保留可供人物对峙对白的完整空场",section:"🏯 青丘王府"},
+{file:"15_青丘白狐正堂_v01.png",name:"15 · 青丘白狐正堂",script:"较小且有人居痕迹的议事厅，低平台、旧桌、火盆和修复梁架表达资源匮乏中的权威",section:"🏯 青丘王府"},
+{file:"16_王府屋脊巡防带_v01.png",name:"16 · 王府屋脊巡防带",script:"夜蓝屋脊、木制猫道、石墙与绳索组成连续可行动的屋顶巡防路线",section:"🏯 青丘王府"},
+{file:"17_灶房后场_v01.png",name:"17 · 灶房后场",script:"烟熏棚屋、木柴、陶缸、菜筐、湿地和微弱灶火组成贫寒而真实的服务后场",section:"🏯 青丘王府"},
+{file:"18_祖祠外庭_v01.png",name:"18 · 祖祠外庭",script:"路径向下进入被松根与岩壁遮蔽的微型祖祠前庭，空间私密、古老且与王府主体隔离",section:"🏯 青丘王府"},
+{file:"19_祖祠内部_v01.png",name:"19 · 祖祠内部",script:"牌位石龛、低供桌、烟黑梁架、根系和一道顶缝冷光形成家族记忆核心",section:"🏯 青丘王府"},
+{file:"20_替劫阵空间_v01.png",name:"20 · 替劫阵空间",script:"地下凹陷石室内，九条实体排水槽连接黑石锚点、铜针和陶制收集器，古老牺牲工程",section:"🏯 青丘王府"},
+
+// ═══ 赤狐领地 21-25 ═══
+{file:"21_红岩峡谷遗城_v01.png",name:"21 · 红岩峡谷遗城",script:"赭红峡谷的多层崖壁城市，洞窟、仓库、吊桥、木廊和烟尘形成垂直生存网络",section:"🔥 赤狐领地"},
+{file:"22_赤狐地下火脉_v01.png",name:"22 · 赤狐地下火脉",script:"天然地热裂隙、蒸汽、铜闸、陶管和黑石平台构成城市基础设施，不出现熔岩湖",section:"🔥 赤狐领地"},
+{file:"23_赤狐宴厅_v01.png",name:"23 · 赤狐宴厅",script:"红岩与烟黑木柱围合长桌宴厅，中央铜栅热沟提供克制暖光，华贵来自材质与历史",section:"🔥 赤狐领地"},
+{file:"24_赤狐旧城街巷_v01.png",name:"24 · 赤狐旧城街巷",script:"贴着红岩上升的狭窄市场街，棚布、吊篮、储罐和上层桥廊强调拥挤生活与贸易",section:"🔥 赤狐领地"},
+{file:"25_赤狐祭坛_v01.png",name:"25 · 赤狐祭坛",script:"日落峡谷边缘的粗砺石台围绕天然热裂隙，焦黑木柱与铜器在巨大地质尺度前微小",section:"🔥 赤狐领地"},
+
+// ═══ 鲛狐水域 26-30 ═══
+{file:"26_沉没水城_v01.png",name:"26 · 沉没水城",script:"从水面下望见被冷湖淹没的屋顶、街道、桥梁和城门，藻丝、淤泥与少数维护灯路",section:"💧 鲛狐水域"},
+{file:"27_水下古殿_v01.png",name:"27 · 水下古殿",script:"屋顶坍塌的宋式石木大殿完全没入湖中，光束穿过水体落在淤泥和水蚀器物上",section:"💧 鲛狐水域"},
+{file:"28_鲛狐寝宫_v01.png",name:"28 · 鲛狐寝宫",script:"半淹没、低气室的私密居所，抬高木台、压重帘幕、密封灯和储藏器体现适水生活",section:"💧 鲛狐水域"},
+{file:"29_水镜祭坛_v01.png",name:"29 · 水镜祭坛",script:"地下湖面像真实黑镜般反射岩顶与残坛，半座祭台延伸到清澈暗水之下",section:"💧 鲛狐水域"},
+{file:"30_湖底遗迹_v01.png",name:"30 · 湖底遗迹",script:"维护区以外的深湖街区埋入厚淤泥，倒塌梁架与残墙逐渐消失在蓝黑颗粒雾中",section:"💧 鲛狐水域"},
+
+// ═══ 藏狐高原 31-35 ═══
+{file:"31_高原洞穴聚落_v01.png",name:"31 · 高原洞穴聚落",script:"洞穴、夯土、干砌石、低木廊和压石屋顶依附荒寒坡地，远景是巨大空旷高原",section:"⛰️ 藏狐高原"},
+{file:"32_巨岩火塘空间_v01.png",name:"32 · 巨岩火塘空间",script:"单块悬岩形成低矮公共屋顶，中央小火塘、粗木柱、风挡和储物区表达集体生存",section:"⛰️ 藏狐高原"},
+{file:"33_藏狐石窟_v01.png",name:"33 · 藏狐石窟",script:"无宗教塑像和壁画的高原档案石窟，以箱匣、木牍、储物与安葬功能为主",section:"⛰️ 藏狐高原"},
+{file:"34_风雪山谷_v01.png",name:"34 · 风雪山谷",script:"地面暴风雪吞没高原峡谷，半埋路标、雪障与废弃哨棚提供尺度，天气成为主要威胁",section:"⛰️ 藏狐高原"},
+{file:"35_高原古道_v01.png",name:"35 · 高原古道",script:"磨损石路穿越无人高原，经风墙、旧桥与倾斜铜路标一路通向遥远山口",section:"⛰️ 藏狐高原"},
+
+// ═══ 狐祖源头 36-45 ═══
+{file:"36_九尾祖源入口_v01.png",name:"36 · 九尾祖源入口",script:"黑岩断层中的湿滑古阶向地下苍白空洞下降，九道天然矿脉在远处汇合",section:"🦊 狐祖源头"},
+{file:"37_九尾巨石_v01.png",name:"37 · 九尾巨石",script:"浅水洞湖中矗立被水蚀成九尾暗示的苍白巨石，微小祭台只用来标识非人尺度",section:"🦊 狐祖源头"},
+{file:"38_血脉核心_v01.png",name:"38 · 血脉核心",script:"黑岩墙中苍白矿脉像循环系统般分支，矿物水缓慢流动并汇入古老收集槽",section:"🦊 狐祖源头"},
+{file:"39_狐祖记忆空间_v01.png",name:"39 · 狐祖记忆空间",script:"云母薄片、湿润矿面和浅水反射把不同遗迹形态切成碎片，记忆由物质与观看产生",section:"🦊 狐祖源头"},
+{file:"40_九尾圣域_v01.png",name:"40 · 九尾圣域",script:"白色化石根柱、黑水台地、矿脉和雾气构成完整地下生态，后世步道只贴附在边缘",section:"🦊 狐祖源头"},
+{file:"41_祖火空间_v01.png",name:"41 · 祖火空间",script:"天然气隙在黑石盆中维持一簇低火，九道焦化根脉向外辐射，强调守护而非壮观",section:"🦊 狐祖源头"},
+{file:"42_天雷遗迹_v01.png",name:"42 · 天雷遗迹",script:"贯穿山体的垂直裂隙留下熔融玻璃状雷击痕，铜接地杆、石质支护和雨水记录灾变",section:"🦊 狐祖源头"},
+{file:"43_祖源祭坛_v01.png",name:"43 · 祖源祭坛",script:"天然苍白石台上九道水槽汇入中央浅洼，黑石锚点和老铜器维持极度克制的仪式感",section:"🦊 狐祖源头"},
+{file:"44_狐祖残影空间_v01.png",name:"44 · 狐祖残影空间",script:"雾、逆光、化石根拱与九道弯曲岩鳍在远墙形成巨大多尾狐影，边缘破碎不完全实体化",section:"🦊 狐祖源头"},
+{file:"45_青丘复苏世界_v01.png",name:"45 · 青丘复苏世界",script:"雨后融雪重新进入旧水系，苔藓、新芽、修复桥梁和零星炊烟让山城缓慢复苏，遗迹依然被自然包围",section:"🦊 狐祖源头"},
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();let secIdx=0;
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
+const title=document.createElement("div");title.className="section-title";
+const count=scenes.filter(s=>s.section===sec).length;
+title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${count} 场景</span></h2><div class="line"></div>`;block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";gallery.setAttribute("data-section",sec);block.appendChild(gallery);root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div>`;
+card.addEventListener("click",()=>openLightbox(i));gal.appendChild(card);
+});
+const subnav=document.getElementById("subnav"),sections=[];subnav.innerHTML='<div class="subnav-label">区域分组</div>';
+doneSections.forEach(sec=>{const id="sec-"+sections.length;sections.push({id,sec});const a=document.createElement("a");a.href="#"+id;a.textContent=sec;subnav.appendChild(a)});
+function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
+window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbInfo.innerHTML=`<b>${s.name}</b> · ${cur+1}/${scenes.length}<br><span style="font-size:13px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
+</script>
+</body>
+</html>
