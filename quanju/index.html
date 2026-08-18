@@ -55,6 +55,27 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
 .footer{text-align:center;padding:50px 20px;font-size:13px;color:rgba(150,130,90,.35);letter-spacing:.15em}
 
+.bible-toggle{display:inline-block;margin:28px auto 0;padding:12px 26px;font-size:14px;letter-spacing:.12em;color:rgba(200,170,130,.7);background:transparent;border:1px solid rgba(180,150,100,.3);border-radius:6px;cursor:pointer;transition:all .25s}
+.bible-toggle:hover{color:rgba(220,190,130,.9);border-color:rgba(180,150,100,.5);background:rgba(180,150,100,.06)}
+.bible-copy{display:inline-block;margin:28px 0 0 10px;padding:12px 20px;font-size:14px;letter-spacing:.1em;color:rgba(180,150,120,.55);background:transparent;border:1px solid rgba(180,150,100,.25);border-radius:6px;cursor:pointer;transition:all .25s}
+.bible-copy:hover{color:rgba(220,190,130,.85);border-color:rgba(180,150,100,.4)}
+.bible-copy.copied{color:#9db88a;border-color:rgba(140,190,140,.4)}
+.bible-wrap{max-width:1100px;margin:0 auto;padding:0 24px;text-align:center}
+.bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75);letter-spacing:.03em}
+.bible-detail ul,.bible-detail ol{padding-left:22px;margin:6px 0}
+.bible-detail li{margin:4px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+.bible-detail th,.bible-detail td{padding:8px 10px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75);vertical-align:top}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05);white-space:nowrap}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+.bible-detail pre{background:rgba(10,12,20,.6);padding:14px;border-radius:4px;font-size:12px;line-height:1.6;color:rgba(215,200,170,.65);overflow-x:auto;margin:10px 0;white-space:pre-wrap;word-break:break-word}
+
+
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
   .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
@@ -82,8 +103,93 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 <header class="hero">
   <p class="ep-title">狐祖归来 · 全剧</p>
   <h1>场 景 母 版</h1>
-  <p class="subtitle">东方自然废墟文明 · 45 场景 · 宋代遗迹被自然吞没 · 狐族继承与生存</p>
+  <p class="subtitle">自然依赖型重建文明 · 45 场景 · 宋制保留尺度礼制工艺 · 自然才是城市结构</p>
 </header>
+
+
+<div class="bible-wrap">
+<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整设定圣经 V2.0</button><button class="bible-copy" id="bibleCopy" onclick="copyBible()" title="一键复制全部圣经内容">📋 复制</button>
+<div class="bible-detail" id="bibleDetail">
+<h3>V2.0 · 自然依赖型重建文明</h3>
+<blockquote>一句话总纲：狐族不是在人类宫殿里扮演人类；他们把文明重新嵌回山体，宋制只保留尺度、礼制和工艺，自然才是城市的结构。</blockquote>
+<p><strong>主视觉锚点：</strong>山体是宫殿的承重系统；宋制是文明秩序，不是人类宫殿复制品。</p>
+
+<h3>一、旧版 → 新版分界线</h3>
+<table>
+<tr><th>判断项</th><th>旧版滑向</th><th>新版执行</th></tr>
+<tr><td>文明状态</td><td>废墟、遗迹、被动等待发现</td><td>已重建、有人维护、仍在运转，规模受山体约束</td></tr>
+<tr><td>王府气质</td><td>人类宫殿搬到雪山</td><td>山体剧场、天然台地、少量关键屋顶 + 清晰礼制轴线</td></tr>
+<tr><td>自然关系</td><td>背景或装饰</td><td>岩壁、树根、水脉、瀑布、天然高差承担承重与交通</td></tr>
+<tr><td>宋制使用</td><td>复制宫门、殿宇、对称院落</td><td>只保留尺度、礼序、梁架、屋面比例、石作与维护制度</td></tr>
+<tr><td>神秘感</td><td>发光符文、魔法阵、CG 光效</td><td>物理性雷、雾、水、火、阴影、矿脉、呼吸与声音</td></tr>
+<tr><td>人物服装</td><td>宫廷戏服、华丽仙侠装</td><td>功能性层叠服、灰白祭袍、狐首面具、旧纺织物、低饱和材质</td></tr>
+</table>
+
+<h3>二、七条世界硬规则</h3>
+<ol>
+<li><strong>山不是背景：</strong>所有重要空间必须能回答它如何依附山体、排水、承重和通行。</li>
+<li><strong>文明是活的：</strong>主殿、祭道、桥廊和灯路必须呈现使用与维护痕迹，不能只剩遗迹情绪。</li>
+<li><strong>宋制是骨架：</strong>用礼序、尺度、梁架与石作，不复制人类皇城的装饰密度。</li>
+<li><strong>自然必须主动：</strong>根系抬起石板，水改变路径，雪压低屋面，雾遮断视线，但不随意摧毁主功能。</li>
+<li><strong>非人空间逻辑：</strong>重视高差、嗅觉路线、隐蔽侧道、树根桥和洞壁回声，而不是笔直街道。</li>
+<li><strong>神秘必须物理：</strong>雷、火、血脉、影子与祖源以材质、光线、气流和声音呈现，拒绝游戏化发光。</li>
+<li><strong>信息预算有限：</strong>每个镜头只突出一个空间主语。</li>
+</ol>
+
+<h3>三、空间语法五层</h3>
+<table>
+<tr><th>层</th><th>主结构</th><th>视觉判断</th></tr>
+<tr><td>山体层</td><td>岩壁、断层、洞厅、天然台地、瀑布、冰层、树根</td><td>占画面最大面积，决定方向、尺度与压迫感</td></tr>
+<tr><td>交通层</td><td>石阶、悬桥、弯折祭道、依崖廊、引水道、屋脊巡防</td><td>路径顺地形走，不制造城市网格</td></tr>
+<tr><td>文明层</td><td>少量整修屋面、木构、灯龛、低台、供桌、储物、铜闸</td><td>用「维护」表现文明，不用装饰堆砌权力</td></tr>
+<tr><td>仪式层</td><td>中轴、祭台、祖碑、火盆、面具、队列、静默空场</td><td>秩序清晰但不对称僵硬，仪式被自然包围</td></tr>
+<tr><td>生活层</td><td>炊烟、油罐、柴薪、修补梁、鞋印、清扫路径、粮袋</td><td>让山地文明有人使用、有资源压力、有日常</td></tr>
+</table>
+<blockquote>气派的来源 = 山体尺度 × 中轴秩序 × 可见运转 × 自然高差，不是更大的牌楼、更密的屋顶或更亮的金色。</blockquote>
+
+<h3>四、五色系统</h3>
+<table>
+<tr><th>色名</th><th>参考色</th><th>使用场景</th></tr>
+<tr><td>雪山蓝灰</td><td>#71808C</td><td>白狐、祖祠、王府外景——最大面积环境色，低饱和</td></tr>
+<tr><td>湿岩黑</td><td>#202A2D</td><td>洞厅、台地、夜景、祖源——承担重量与深度</td></tr>
+<tr><td>根木褐</td><td>#5B4B3B</td><td>古树、梁架、祭袍边缘、家具——连接自然与文明</td></tr>
+<tr><td>氧化铜</td><td>#7B6B55</td><td>灯龛、闸件、旧器、路标——以旧铜为文明标记</td></tr>
+<tr><td>克制暖火</td><td>#C88B54</td><td>窗、灯、火盆、祖火——只作占用证明，禁大面积暖橙</td></tr>
+</table>
+
+<h3>五、摄影与光影系统</h3>
+<ul>
+<li><strong>画幅：</strong>21:9 母版，人物与中轴留中央安全区，便于竖屏裁切。</li>
+<li><strong>镜头：</strong>外景 24-35mm 建立地质尺度；中景 35-50mm 保留路径与人物关系；近景 65-85mm 捕捉湿石、纤维、火、面具。</li>
+<li><strong>主光：</strong>冷灰蓝自然光为主；洞厅和夜景用少量暖铜灯/火盆证明有人维护。</li>
+<li><strong>空气：</strong>真实雾、雪、凝结水、瀑布水汽和呼吸感，层次由空气透视形成。</li>
+</ul>
+
+<h3>六、四狐领地与狐祖源头 · 色彩主调</h3>
+<table>
+<tr><th>族群/区域</th><th>自然介质</th><th>文明形态</th><th>叙事气质</th><th>色彩主调</th></tr>
+<tr><td>青丘白狐</td><td>雪山、黑岩、冰瀑、松林</td><td>依崖王府、桥廊、祖祠、守灯和水路</td><td>秩序、家族、冷峻、重建</td><td>雪蓝、湿黑、旧铜、少量暖金</td></tr>
+<tr><td>赤狐</td><td>红岩、地热、烟尘、火脉</td><td>垂直峡谷、火脉基础设施、仓储与宴厅</td><td>交易、算计、热烈、危险</td><td>赭红、焦黑、铜橙</td></tr>
+<tr><td>鲛狐</td><td>冷湖、沉城、水镜、淤泥</td><td>水下街区、半淹寝宫、潜水祭坛</td><td>魅惑、边界、失控、深情</td><td>湖蓝、蓝黑、湿银、暗青</td></tr>
+<tr><td>藏狐</td><td>高原、风雪、洞穴、干石</td><td>火塘、石窟、低廊、风墙与古道</td><td>朴拙、耐寒、幽默、陪伴</td><td>土灰、藏红、炭黑、雪白</td></tr>
+<tr><td>狐祖源头</td><td>矿脉、古根、浅水、裂隙、祖火</td><td>天然圣域、血脉核心、祖源祭坛</td><td>非人、记忆、归位、复苏</td><td>苍白石、黑水、根褐、低火金</td></tr>
+</table>
+
+<h3>七、验收门</h3>
+<table>
+<tr><th>门类</th><th>必须满足</th><th>拒绝条件</th></tr>
+<tr><td>地理连续性</td><td>入口、桥、台地、廊、洞厅和水路的高差与方向可互相解释</td><td>每张图都是孤立奇观</td></tr>
+<tr><td>文明连续性</td><td>同一族群的石作、木作、灯龛、铜件和维护方式稳定</td><td>每个场景像不同朝代或不同游戏资产</td></tr>
+<tr><td>自然连续性</td><td>根、雪、雾、瀑布、湿痕和树种在同一海拔/天气中逻辑一致</td><td>自然只做贴图，或突然出现无来源的大型植物/水体</td></tr>
+<tr><td>人物连续性</td><td>祭祀行列共用白灰祭袍与狐首面具，族群差异通过材质和色彩细分</td><td>服装跳成宫廷戏服、仙侠战甲或现代时装</td></tr>
+<tr><td>摄影连续性</td><td>21:9 母版、冷灰蓝主调、少量暖占用光、真实空气透视</td><td>高光塑料感、过饱和、无重力、无空间主语</td></tr>
+</table>
+
+<h3>八、AI 生图母提示语</h3>
+<pre>Photorealistic live-action film still, real location production design, ARRI Alexa 65, subtle 35mm grain, cinematic environmental realism, restrained oriental post-civilization fantasy, a living fox-lineage civilization rebuilt inside a colossal mountain, nature as the primary structural system, Song influence limited to proportion, axial hierarchy, restrained timber joinery and stone craft, realistic rock strata, snow, roots, old pines, mist, waterfalls, water channels, maintained paths, a few warm occupied lamps, grand through geological scale and clear function, cold gray-blue winter palette with restrained amber warmth, 21:9 ultrawide composition, no readable text, no watermark.</pre>
+<p><strong>负面约束：</strong>No human imperial palace, no Forbidden City, no generic Chinese tourist architecture, no dense urban grid, no repeated roof skyline, no radial circular platforms, no abandoned ruin, no xianxia palace, no fantasy castle, no glowing runes, no magic circle, no neon, no crystal cave, no CGI, no game concept art, no modern clothing, no readable text, no watermark.</p>
+</div>
+</div>
 
 <div id="content-root"></div>
 
@@ -94,7 +200,7 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
   <div class="lb-info" id="lbInfo"></div>
   <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
 </div>
-<div class="footer">狐 祖 归 来 · 全 剧 场 景 母 版 · 东 方 自 然 废 墟 文 明</div>
+<div class="footer">狐 祖 归 来 · 全 剧 场 景 母 版 · 自 然 依 赖 型 重 建 文 明</div>
 
 </div>
 
@@ -185,6 +291,10 @@ function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbInfo.innerHTML=`<b>${s.
 function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}function next(){cur=(cur+1)%scenes.length;updateLb()}
 document.getElementById("lbClose").addEventListener("click",closeLightbox);document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
 function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
+
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整设定圣经 V2.0"}else{d.classList.add("active");b.innerHTML="▾ 收起设定圣经 V2.0";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+async function copyBible(){var t=document.getElementById("bibleDetail").innerText,c=document.getElementById("bibleCopy");try{await navigator.clipboard.writeText(t);c.textContent="✓ 已复制";c.classList.add("copied");setTimeout(function(){c.textContent="📋 复制";c.classList.remove("copied")},2000)}catch(e){c.textContent="✗ 失败";setTimeout(function(){c.textContent="📋 复制"},2000)}}
+
 </script>
 </body>
 </html>
