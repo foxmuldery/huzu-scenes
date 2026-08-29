@@ -1260,7 +1260,7 @@ root.appendChild(block);
 const gal=root.querySelector(`[data-section="${sec}"]`);
 const card=document.createElement("div");card.className="card";
 card.setAttribute("data-index",i);
-card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.innerHTML=`<div class="img-container"><img src="web/${sc.file}.jpg" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
 card.addEventListener("click",()=>openLightbox(i));
 gal.appendChild(card);
 });
