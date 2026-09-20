@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狐祖归来 · 道具图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+html{scroll-behavior:smooth}
+
+/* ── 左侧导航 ── */
+.sidebar{position:fixed;top:0;left:0;width:200px;height:100vh;background:rgba(10,12,22,.95);border-right:1px solid rgba(180,160,120,.12);overflow-y:auto;z-index:100;padding:24px 0 24px 0}
+.sidebar-header{padding:0 20px 16px;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:8px}
+.sidebar-header h3{font-size:14px;font-weight:400;letter-spacing:.1em;color:#d4c8a8;text-align:center}
+.sidebar-nav{list-style:none;padding:0;margin:0}
+.sidebar-nav li{margin:0}
+.sidebar-nav a{display:block;padding:8px 20px;font-size:12px;letter-spacing:.05em;color:rgba(200,180,140,.5);text-decoration:none;transition:all .2s;border-left:2px solid transparent;line-height:1.4}
+.sidebar-nav a:hover{color:#d4c8a8;background:rgba(180,150,100,.06);border-left-color:rgba(200,170,120,.3)}
+.sidebar-nav a.nav-sub{padding-left:32px;font-size:11px;color:rgba(180,160,120,.4)}
+.sidebar-nav a.nav-sub:hover{color:rgba(210,180,140,.7)}
+.sidebar-nav .nav-cat{padding:12px 20px 4px;font-size:13px;font-weight:400;letter-spacing:.08em;color:#c8b898;border-bottom:1px solid rgba(180,160,120,.08);margin:8px 0 4px}
+.sidebar-nav a .nav-emoji{font-size:13px;margin-right:4px}
+
+/* ── 主内容区 ── */
+.main-content{margin-left:200px;min-height:100vh}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start;padding-bottom:8px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 20px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:14px;color:#d4c8a8;letter-spacing:.05em;text-align:right;line-height:1.3}
+.card .label .scene-script{font-size:11px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.5}
+
+/* ── 复制按钮 ── */
+.card .copy-btn{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:4px;background:rgba(10,12,20,.7);border:1px solid rgba(180,160,120,.15);color:rgba(200,180,140,.4);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:0;z-index:5}
+.card:hover .copy-btn{opacity:1}
+.card .copy-btn:hover{background:rgba(180,150,100,.12);border-color:rgba(200,170,120,.4);color:rgba(220,200,160,.8)}
+.card .copy-btn.copied{color:#8ec98e;border-color:rgba(140,200,140,.4)}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;user-select:none;padding:20px;transition:color .2s;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+/* ── 分类导航条 ── */
+.cat-nav{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cat-nav a{font-size:13px;letter-spacing:.08em;color:rgba(200,180,140,.55);text-decoration:none;padding:6px 16px;border:1px solid rgba(180,150,100,.15);border-radius:20px;transition:all .2s}
+.cat-nav a:hover,.cat-nav a.active{color:#d4c8a8;border-color:rgba(200,170,120,.4);background:rgba(180,150,100,.06)}
+
+/* ── 密码门 ── */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:rgba(8,8,18,.97);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-gate.hidden{display:none}
+.pw-gate h2{font-size:28px;font-weight:300;letter-spacing:.15em;color:#d4c8a8;margin-bottom:8px}
+.pw-gate .pw-sub{font-size:14px;color:rgba(180,160,120,.4);margin-bottom:28px;letter-spacing:.1em}
+.pw-gate input{width:260px;padding:10px 16px;font-size:16px;background:rgba(20,24,40,.8);border:1px solid rgba(180,150,100,.25);border-radius:4px;color:#ede4d4;text-align:center;letter-spacing:.3em;outline:none;transition:border-color .2s}
+.pw-gate input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate button{margin-top:14px;padding:10px 40px;font-size:15px;letter-spacing:.12em;color:#d4c8a8;background:rgba(180,150,100,.08);border:1px solid rgba(180,150,100,.3);border-radius:4px;cursor:pointer;transition:all .2s}
+.pw-gate button:hover{background:rgba(180,150,100,.15);border-color:rgba(200,170,120,.5)}
+.pw-err{color:#c96e6e;font-size:13px;margin-top:12px;letter-spacing:.05em;min-height:20px}
+
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}.main-content{margin-left:0}.sidebar{display:none}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr;gap:12px}.hero{padding:40px 16px 30px}}
+</style>
+</head>
+<body>
+
+<!-- ═══ 密码门 ═══ -->
+<div class="pw-gate" id="pwGate">
+  <h2>狐祖归来</h2>
+  <p class="pw-sub">请输入访问密码</p>
+  <input type="password" id="pwInput" placeholder="····" onkeydown="if(event.key==='Enter')checkPw()">
+  <button onclick="checkPw()">进入</button>
+  <div class="pw-err" id="pwErr"></div>
+</div>
+
+<!-- ═══ 左侧导航 ═══ -->
+<nav class="sidebar">
+  <div class="sidebar-header"><h3>道具目录</h3></div>
+  <ul class="sidebar-nav" id="sidebarNav"></ul>
+</nav>
+
+<!-- ═══ 主内容 ═══ -->
+<div class="main-content">
+
+<header class="hero">
+<p class="ep-title">狐祖归来 · EP01《雪夜孤灯》</p>
+<h1>狐祖归来 · 道具图集</h1>
+<p class="subtitle">狐祖归来 EP01 · 雪夜孤灯 · 五十一件</p>
+</header>
+
+<!-- ═══ 分类导航 ═══ -->
+<nav class="cat-nav" id="catNav"></nav>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+<span class="lb-close" id="lbClose">&times;</span>
+<span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+<img src="" alt="" id="lbImg">
+<div class="lb-info" id="lbInfo"></div>
+<span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">狐祖归来 · 雪夜孤灯 · 小花猫道具</div>
+
+<script>
+// ── 密码验证 ──
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+(function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden")}})();
+async function checkPw(){const input=document.getElementById("pwInput").value;const err=document.getElementById("pwErr");if(!input){err.textContent="请输入密码";return}const h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(input));const hex=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,"0")).join("");if(hex===PW_HASH){document.getElementById("pwGate").classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{err.textContent="密码错误"}}
+
+const scenes=[
+// ── 生物 · 小花猫 ──
+{cat:"🐱 生物 · 小花猫",file:"web/01_守灯长廊_瓦洞坠落_惊恐蜷缩.jpeg",name:"坠落·蜷缩",script:"「檐下积雪、碎瓦和一只躲在瓦洞里的小花猫同时坠落。」浑身湿透，低伏蜷缩，飞机耳",section:"守灯长廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/01_守灯长廊_瓦洞坠落_带伤侧立.jpeg",name:"坠落·带伤",script:"左腿可见擦伤。侧面站立，弓背戒备——坠落后的求生本能",section:"守灯长廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/02_守灯长廊_雪娘救猫_受惊特写.jpeg",name:"救猫·受惊",script:"「小猫受惊，狠狠抓破雪娘的手背。」泥泞湿身，正脸特写，眼神惊恐而坚韧",section:"守灯长廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/03_守灯长廊_王玄晏对峙_正面炸毛.jpeg",name:"对峙·正面",script:"「小猫对着他猛然炸毛，瞳孔缩成细线。」正脸冷峻凝视，琥珀色瞳孔紧缩",section:"守灯长廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/03_守灯长廊_王玄晏对峙_侧面炸毛.jpeg",name:"对峙·侧面",script:"侧面视角——耳尖压低，胡须张开，全身绷紧",section:"守灯长廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/04_雪庭_衣襟发抖_仰头乞求.jpeg",name:"发抖·仰头",script:"「小猫在雪娘怀里发抖，发出很轻的一声叫。」俯拍视角，仰头向上看",section:"雪庭"},
+{cat:"🐱 生物 · 小花猫",file:"web/05_灶房_笼门初启_小心行走.jpeg",name:"出笼·探步",script:"「阿檀掀开笼门，小猫钻出来。」侧身小心翼翼迈步",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/05_灶房_笼门初启_背影躲藏.jpeg",name:"出笼·背影",script:"「躲到柴堆后面。」正后方视角，背部可见剃毛痕迹",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/06_灶房_拒食栗子_委屈扭头.jpeg",name:"拒食·委屈",script:"「小猫闻了闻，扭开头。猫不吃栗子。」侧脸特写，眼神迷茫委屈",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/07_灶房_叼走鱼肉_仰头急探.jpeg",name:"叼鱼·急探",script:"「小猫立刻探出头，叼走鱼肉。」仰头向上看",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/08_灶房_灶门炸毛_门边凝视.jpeg",name:"炸毛·门边",script:"「小猫忽然对着灶房门炸毛。」左侧面专注凝视门外",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/09_灶房后廊_青玉环炸毛_低呜戒备.jpeg",name:"玉环·低呜",script:"「小猫看见雪娘腕上的青玉环，立刻炸毛。」右侧面，耳向后压",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/10_灶房后廊_雪娘抚摸_平静站立.jpeg",name:"抚摸·平静",script:"「雪娘摸了摸小猫的头。小猫先是躲，随后没有再抓她。」正脸直立，眼神归于平静",section:"灶房与后廊"},
+{cat:"🐱 生物 · 小花猫",file:"web/11_参考_正面标准_警觉凝视.jpeg",name:"标准参考",script:"全身正面站立，凝重视线。琥珀双眸，虎斑纹路清晰",section:"角色参考"},
+
+// ── 法器 · 青玉护环 ──
+{cat:"💍 法器 · 青玉护环",file:"web/青玉护环_黑木匣中.jpeg",name:"黑木匣中",script:"「狐侍打开黑木匣。匣中是一只青玉护环，玉中藏着极细的暗金雷纹。」墨绿青玉，金丝脉络如雷纹蔓延",section:"雷纹法器"},
+{cat:"💍 法器 · 青玉护环",file:"web/青玉护环_设计透视图.jpeg",name:"设计透视图",script:"C形开口环，兽首端头雕刻。三视角展示玉环厚度、内壁金丝网络与卡榫细节",section:"雷纹法器"},
+{cat:"💍 法器 · 青玉护环",file:"web/青玉护环_岩上雷光.jpeg",name:"岩上雷光",script:"「玉环中的暗金雷纹从她手腕一路钻入血肉。」青玉置于黑岩之上，暗光中金丝如雷电流转",section:"雷纹法器"},
+
+// ── 法器 · 祖灯 ──
+{cat:"🔥 法器 · 祖灯",file:"web/祖灯_20260723-141716.jpeg",name:"标准展示",script:"「雪娘捧着祖灯，从长阶下走来。」黑石灯碗、青玉兽足、绿水晶簇——金缮纹路贯穿全身。灯芯燃着幽绿火焰，轻烟袅袅",section:"标准展示"},
+{cat:"🔥 法器 · 祖灯",file:"web/祖灯_20260723-141718.jpeg",name:"正面",script:"正面特写——灯碗两侧水晶如翼展开，碗内暗液映着绿焰，四条青玉兽足拱卫基座",section:"标准展示"},
+{cat:"🔥 法器 · 祖灯",file:"web/祖灯_20260723-141815.jpeg",name:"角度视图",script:"多角度展示——黑石与青玉的材质对比，金缮裂隙的光泽，水晶簇的生长方向",section:"标准展示"},
+{cat:"🔥 法器 · 祖灯",file:"web/祖灯_20260723-141711.jpeg",name:"岩上幽火",script:"「祖灯的灯芯突然爆裂。火焰只剩针尖大小。」祖灯置于湿黑岩上，绿焰微光——即将熄灭的刹那",section:"场景氛围"},
+
+// ── 饰物 · 旧银簪 ──
+{cat:"🧷 饰物 · 旧银簪",file:"web/狐祖归来_旧银簪_正视图.jpeg",name:"正视图",script:"「发间只有一支旧银簪。」雪娘唯一的饰物——旧银氧化发暗，簪身细长，尾端有简朴刻纹",section:"标准展示"},
+{cat:"🧷 饰物 · 旧银簪",file:"web/狐祖归来_旧银簪_核心透视图.jpeg",name:"核心透视图",script:"多角度展示银簪的厚度、弧度与尾端细节——概念设计参考图",section:"标准展示"},
+{cat:"🧷 饰物 · 旧银簪",file:"web/狐祖归来_旧银簪_左侧视图.jpeg",name:"左侧视图",script:"侧面轮廓——簪身的弧度与尖端。正是这尖端撬开了青玉环",section:"标准展示"},
+{cat:"🧷 饰物 · 旧银簪",file:"web/狐祖归来_旧银簪_后视图.jpeg",name:"后视图",script:"背面视角——簪身略有弯曲痕迹，见证过撬动硬物的力量",section:"标准展示"},
+{cat:"🧷 饰物 · 旧银簪",file:"web/狐祖归来_旧银簪_微距材质.jpeg",name:"微距材质",script:"「她把银簪刺进第一枚骨钉根部，用尽全力一撬。」氧化暗纹、使用划痕、银质包浆的岁月质感",section:"材质细节"},
+
+// ── 法器 · 母亲牌位 ──
+{cat:"🪦 法器 · 母亲牌位",file:"web/母亲牌位_场景展示.jpeg",name:"场景展示",script:"「长案中央放着一块陈旧的小牌位。雪娘认出上面的名字，脚步停住。」黑石碑身、金缮裂隙、暗红布帛缠绕，青环垂挂——被锁在偏祠最下层的王氏族裔之证",section:"标准展示"},
+{cat:"🪦 法器 · 母亲牌位",file:"web/母亲牌位_母亲牌位_正视图.jpeg",name:"正视图",script:"正面——尖顶碑形，内嵌素面白石面板，金缮裂纹贯穿黑石外框。顶端刻有树纹族徽",section:"标准展示"},
+{cat:"🪦 法器 · 母亲牌位",file:"web/母亲牌位_母亲牌位_左侧视图.jpeg",name:"左侧视图",script:"侧面——可见暗红布帛缠绕碑身左侧，布尾散落拖地。金缮纹路沿侧面延伸",section:"标准展示"},
+{cat:"🪦 法器 · 母亲牌位",file:"web/母亲牌位_母亲牌位_后视图.jpeg",name:"后视图",script:"背面——多层台阶基座承托碑身，黑石风化纹理与金缮痕迹贯穿背面",section:"标准展示"},
+{cat:"🪦 法器 · 母亲牌位",file:"web/母亲牌位_母亲牌位_微距材质.jpeg",name:"微距材质",script:"「她母亲的牌位。它本该被锁在偏祠最下层。」极近距离——黑石风化细节、金缮裂隙光泽、布帛纤维与青环铜绿",section:"材质细节"},
+
+// ── 武备 · 王玄晏寒剑 ──
+{cat:"🗡️ 武备 · 王玄晏寒剑",file:"web/王玄晏寒剑_正视图.jpeg",name:"正视图",script:"「王玄晏拔剑半寸。冰白剑气横扫而出，青色狐火在空中冻结。」白狐少主的佩剑——寒铁剑身，月白剑柄，霜纹暗刻",section:"标准展示"},
+{cat:"🗡️ 武备 · 王玄晏寒剑",file:"web/王玄晏寒剑_核心透视图.jpeg",name:"核心透视图",script:"多角度展示剑身弧度、剑格雕纹与剑柄缠绳——概念设计参考",section:"标准展示"},
+{cat:"🗡️ 武备 · 王玄晏寒剑",file:"web/王玄晏寒剑_左侧视图.jpeg",name:"左侧视图",script:"侧面轮廓——剑脊线条、刃口寒光、剑柄配重",section:"标准展示"},
+{cat:"🗡️ 武备 · 王玄晏寒剑",file:"web/王玄晏寒剑_后视图.jpeg",name:"后视图",script:"背面——剑鞘挂环与剑身厚度关系",section:"标准展示"},
+{cat:"🗡️ 武备 · 王玄晏寒剑",file:"web/王玄晏寒剑_微距材质.jpeg",name:"微距材质",script:"「冰白剑气横扫而出。」极近距离——剑身霜纹、刃口冰晶、剑柄缠绳与寒铁包浆",section:"材质细节"},
+
+// ── 法器 · 青丘白狐灯 ──
+{cat:"🏮 法器 · 青丘白狐灯",file:"web/青丘白狐灯_正视图.jpeg",name:"正视图",script:"「雪庭四周亮起白色狐灯。」白狐一族的仪式灯具——石座铜身，灯罩透出冷白微光，灯柱刻有狐尾旋纹",section:"标准展示"},
+{cat:"🏮 法器 · 青丘白狐灯",file:"web/青丘白狐灯_核心透视图.jpeg",name:"核心透视图",script:"多角度展示灯座、灯柱与灯罩的结构关系——概念设计参考",section:"标准展示"},
+{cat:"🏮 法器 · 青丘白狐灯",file:"web/青丘白狐灯_左侧视图.jpeg",name:"左侧视图",script:"侧面——灯柱的旋纹走向与灯罩弧度",section:"标准展示"},
+{cat:"🏮 法器 · 青丘白狐灯",file:"web/青丘白狐灯_后视图.jpeg",name:"后视图",script:"背面——灯座基石的层叠结构与背面纹饰",section:"标准展示"},
+{cat:"🏮 法器 · 青丘白狐灯",file:"web/青丘白狐灯_微距材质.jpeg",name:"微距材质",script:"「满山狐灯同时熄灭，又在下一瞬全部转为青色。」极近距离——石座风化、铜身包浆、灯罩透光纹理",section:"材质细节"},
+
+// ── 武备 · 镇狐锁 ──
+{cat:"⛓️ 武备 · 镇狐锁",file:"web/镇狐锁_20260723-160133.jpeg",name:"完整展示",script:"「青禾颈上拖着半截镇狐锁。」黑铁锁环、金缮裂隙、棘刺锁链——禁锢低阶狐族的刑具。铰接开合，链身厚重",section:"标准展示"},
+{cat:"⛓️ 武备 · 镇狐锁",file:"web/镇狐锁_20260723-160129.jpeg",name:"角度视图",script:"「白狐巡卫一拥而上，将镇狐索套住他的颈肩。」不同角度展示锁环开合结构、链节连接与棘刺分布",section:"标准展示"},
+{cat:"⛓️ 武备 · 镇狐锁",file:"web/镇狐锁_20260723-160125.jpeg",name:"断裂残件",script:"「青禾翻身割断锁链。」断裂的锁链残段——切口锐利、链节纹理清晰。断口处露出银白新茬",section:"标准展示"},
+{cat:"⛓️ 武备 · 镇狐锁",file:"web/镇狐锁_20260723-160121.jpeg",name:"角度视图2",script:"另一角度——锁环内径与棘刺朝向的透视关系",section:"标准展示"},
+{cat:"⛓️ 武备 · 镇狐锁",file:"web/镇狐锁_20260723-160131.jpeg",name:"微距材质",script:"「颈上的镇狐锁却骤然绷直。」极近距离——黑铁风化纹理、金缮裂隙光泽、棘刺的冷铁质感与锁链的铸造细节",section:"材质细节"},
+
+// ── 武备 · 白狐巡卫冰武 ──
+{cat:"🗡️ 武备 · 白狐巡卫冰武",file:"web/狐祖归来_白狐巡卫冰系武备系统_正视图.jpeg",name:"正视图",script:"「六名白狐巡卫跃上屋脊，银甲映雪。」冰矛、冰链、冰甲——正面展示",section:"标准展示"},
+{cat:"🗡️ 武备 · 白狐巡卫冰武",file:"web/狐祖归来_白狐巡卫冰系武备系统_核心透视图.jpeg",name:"核心透视图",script:"多角度展示冰矛枪尖、链节连接、甲片层叠的透视关系",section:"标准展示"},
+{cat:"🗡️ 武备 · 白狐巡卫冰武",file:"web/狐祖归来_白狐巡卫冰系武备系统_左侧视图.jpeg",name:"左侧视图",script:"侧面轮廓——冰矛的弧度与重量感，冰链的延伸形态",section:"标准展示"},
+{cat:"🗡️ 武备 · 白狐巡卫冰武",file:"web/狐祖归来_白狐巡卫冰系武备系统_后视图.jpeg",name:"后视图",script:"背面视角——冰甲背部的层叠结构与链接方式",section:"标准展示"},
+{cat:"🗡️ 武备 · 白狐巡卫冰武",file:"web/狐祖归来_白狐巡卫冰系武备系统_微距材质.jpeg",name:"微距材质",script:"「一道冰链贴着他后背掠过，轰然劈碎屋脊兽吻。」冰晶纹理、霜面反光、金属寒光",section:"材质细节"},
+];
+
+const root=document.getElementById("content-root");
+const sidebarNav=document.getElementById("sidebarNav");
+const catNav=document.getElementById("catNav");
+const doneKeys=new Set(),catFirstId={};
+let secIdx=0;
+scenes.forEach((sc,i)=>{
+const cat=sc.cat||"",sec=sc.section,key=cat+"|||"+sec;
+if(!doneKeys.has(cat)){
+doneKeys.add(cat);
+// 侧边栏分类头
+const catDiv=document.createElement("div");catDiv.className="nav-cat";catDiv.textContent=cat;sidebarNav.appendChild(catDiv);
+}
+if(!doneKeys.has(key)){
+doneKeys.add(key);
+secIdx++;
+const secId="sec-"+secIdx;
+if(!catFirstId[cat]) catFirstId[cat]=secId;
+const block=document.createElement("div");block.className="section-block";block.id=secId;
+const title=document.createElement("div");title.className="section-title";
+title.innerHTML=`<div class="line"></div><h2>▎${sec}</h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";
+gallery.setAttribute("data-key",key);
+block.appendChild(gallery);
+root.appendChild(block);
+// 侧边栏子链接
+const li=document.createElement("li");
+li.innerHTML=`<a href="#${secId}" class="nav-sub">${sec}</a>`;
+sidebarNav.appendChild(li);
+}
+const gal=root.querySelector(`[data-key="${key}"]`);
+const card=document.createElement("div");card.className="card";
+card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><button class="copy-btn" title="复制描述" onclick="event.stopPropagation();copyScene(this,'${sc.script.replace(/'/g,"\\'")}')">📋</button><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+// 顶部分类导航
+Object.entries(catFirstId).forEach(([cat,id])=>{
+const a=document.createElement("a");a.href="#"+id;a.textContent=cat;catNav.appendChild(a);
+});
+
+// 复制功能
+function copyScene(btn,text){
+navigator.clipboard.writeText(text).then(()=>{
+btn.classList.add("copied");btn.textContent="✓";
+setTimeout(()=>{btn.classList.remove("copied");btn.textContent="📋"},1500);
+});
+}
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(210,190,160,.55)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</div>
+</body>
+</html>
