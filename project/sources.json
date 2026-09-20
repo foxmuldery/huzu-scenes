@@ -1,0 +1,87 @@
+{
+  "project": "狐祖归来",
+  "target": "foxmuldery/huzu-scenes",
+  "status": "complete-source-trees-verified",
+  "sources": [
+    {
+      "number": "038",
+      "slug": "props",
+      "label": "道具",
+      "repository": "foxmuldery/huzu-props",
+      "commit": "8576c1c640d087cce5ef7a23c1b201e3ed0ae1a2",
+      "tree": "7d4836e0c02d2d3780bb4d897c25fcfa5641c9ca",
+      "files": 66,
+      "verified_tree": "7d4836e0c02d2d3780bb4d897c25fcfa5641c9ca",
+      "entry_exists": true
+    },
+    {
+      "number": "039",
+      "slug": "scene-explore",
+      "label": "场景探索",
+      "repository": "foxmuldery/huzu-scene-explore",
+      "commit": "50602e0dfa13b4df9edd3c98c2c0c15f33f009cf",
+      "tree": "8863d059bd1852bc65fb914fb1e85eee8c1930c8",
+      "files": 151,
+      "verified_tree": "8863d059bd1852bc65fb914fb1e85eee8c1930c8",
+      "entry_exists": true
+    },
+    {
+      "number": "040",
+      "slug": "scene-pick",
+      "label": "场景挑选",
+      "repository": "foxmuldery/huzu-scene-pick",
+      "commit": "c3afb4c0c5e4c054ca714f770ea1c5c829f309fe",
+      "tree": "f9dc5f97b7ba8bdb5236515981723d8f285cf3cb",
+      "files": 303,
+      "verified_tree": "f9dc5f97b7ba8bdb5236515981723d8f285cf3cb",
+      "entry_exists": true
+    },
+    {
+      "number": "041",
+      "slug": "scenes",
+      "label": "场景",
+      "repository": "foxmuldery/huzu-scenes",
+      "commit": "e799d65dd53a1c9d4d2e0410660591f84c1b1a32",
+      "tree": "80bf632be4b8991259a50c47ab4107e6157c7a64",
+      "files": 464,
+      "verified_tree": "80bf632be4b8991259a50c47ab4107e6157c7a64",
+      "entry_exists": true
+    },
+    {
+      "number": "042",
+      "slug": "storyboard",
+      "label": "分镜",
+      "repository": "foxmuldery/huzu-storyboard",
+      "commit": "7106eef66c393e0cdd1320da12b9818b57aed082",
+      "tree": "b1d15fa455dfe9c5667c38d6bacd7f22bdc4f1c3",
+      "files": 32,
+      "verified_tree": "b1d15fa455dfe9c5667c38d6bacd7f22bdc4f1c3",
+      "entry_exists": true
+    },
+    {
+      "number": "043",
+      "slug": "style-compare",
+      "label": "风格比较",
+      "repository": "foxmuldery/huzu-style-compare",
+      "commit": "002c75ce299dcc0bfd8d4822ed76d7a4c1c2641f",
+      "tree": "73bd4bd456d88edcfcc35577bd30d6e96f8cfd76",
+      "files": 61,
+      "verified_tree": "73bd4bd456d88edcfcc35577bd30d6e96f8cfd76",
+      "entry_exists": true
+    },
+    {
+      "number": "044",
+      "slug": "characters",
+      "label": "角色造型",
+      "repository": "foxmuldery/huzu-xueniang",
+      "commit": "6ab5038410962af8141d4ff4740227038ee375f0",
+      "tree": "33d5898b7272c9df8f58f0f9098e62fbb69d105d",
+      "files": 852,
+      "verified_tree": "33d5898b7272c9df8f58f0f9098e62fbb69d105d",
+      "entry_exists": true
+    }
+  ],
+  "original_repositories_modified": false,
+  "old_homepage_modified": false,
+  "scope": "Default-branch Git histories and exact file trees; no external databases, browser storage, Releases, or LFS hydration claimed"
+}

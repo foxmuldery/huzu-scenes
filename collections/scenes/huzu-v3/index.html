@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狐祖归来 · V3 场景图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:210px;background:linear-gradient(180deg,#0d1025 0%,#0a0d1a 100%);border-right:1px solid rgba(180,160,120,.12);z-index:100;display:flex;flex-direction:column;padding:28px 0 20px}
+.sidebar-brand{padding:0 22px 20px;font-size:18px;letter-spacing:.15em;color:#d4c8a0;text-align:center;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 10px}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px;letter-spacing:.08em;color:rgba(200,180,150,.55);text-decoration:none;border-radius:6px;transition:all .25s}
+.sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
+.sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
+.badge{padding:2px 7px;font-size:10px;letter-spacing:.1em;background:rgba(140,190,170,.18);color:#8cb8a8;border-radius:3px;margin-left:4px}
+.sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px;line-height:1}
+.sidebar-toggle:hover{color:rgba(220,190,130,.9)}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.body-wrap{margin-left:210px}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,56px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:14px;letter-spacing:.2em;color:rgba(190,160,120,.45)}
+
+.portal{max-width:900px;margin:60px auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.portal-card{background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:10px;padding:36px 28px;text-decoration:none;transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:16px}
+.portal-card:hover{border-color:rgba(180,140,80,.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.portal-card .icon{font-size:48px}
+.portal-card .name{font-size:20px;color:#d4c8a0;letter-spacing:.12em}
+.portal-card .desc{font-size:14px;color:rgba(180,160,120,.45);text-align:center;line-height:1.6}
+.portal-card .count{font-size:13px;color:rgba(140,190,170,.45);letter-spacing:.06em}
+.footer{text-align:center;padding:50px 20px;font-size:13px;color:rgba(150,130,90,.35);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
+  .body-wrap{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">狐祖 · 场景<span class="badge">V3</span></div>
+  <div class="sidebar-nav">
+    <a href="../"><span>🏠</span> 首页 V1</a>
+    <a href="./" class="active"><span>🏠</span> 首页 V3</a>
+    <a href="qingqiu-kingdom/"><span>🏯</span> 青丘王府</a>
+    <a href="qingqiu-shrine/"><span>⛩️</span> 青丘祖祠</a>
+  </div>
+</nav>
+
+<div class="body-wrap">
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · EP01 <span class="badge" style="margin-left:10px">V3 · 原生文本重生版</span></p>
+  <h1>场 景 图 集</h1>
+  <p class="subtitle">FOLW · 胡金铨式老港片武侠摄影 · 宋画绢本美学</p>
+</header>
+
+<div class="portal">
+  <a href="qingqiu-kingdom/" class="portal-card">
+    <span class="icon">🏯</span>
+    <span class="name">青丘王府</span>
+    <span class="desc">白狐王庭巢城 · 外山门→跨谷桥→前庭→正堂→王座→悬崖回廊→后山</span>
+    <span class="count">28 景</span>
+  </a>
+  <a href="qingqiu-shrine/" class="portal-card">
+    <span class="icon">⛩️</span>
+    <span class="name">青丘祖祠</span>
+    <span class="desc">雪山绝壁中的祖源入口 · 前道→祭道→祭礼平台→正殿→试炼→圣域</span>
+    <span class="count">34 景</span>
+  </a>
+</div>
+<div class="footer">狐 祖 归 来 · V3 · 原 生 文 本 重 生 · 宋 绢 美 学</div>
+
+</div>
+<script>function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}</script>
+</body>
+</html>
