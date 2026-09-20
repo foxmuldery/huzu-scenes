@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>狐祖归来 · 东方山水视觉探索 + EP01 全场景对照</title>
+<style>
+:root{
+  --bg:#0a0a14; --card:#111524; --text:#e0d8c8; --muted:rgba(200,180,140,.45);
+  --head:#d4c8a8; --line:rgba(180,160,120,.15); --gold:rgba(220,180,100,.75);
+  --seed:#7eb8d4;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:"PingFang SC","Noto Serif SC",serif;line-height:1.55}
+a{color:var(--gold);text-decoration:none}
+.app{display:flex;min-height:100vh}
+.sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;overflow-y:auto;
+  background:#0d1020;border-right:1px solid var(--line);padding:18px 0 40px;z-index:20}
+.sidebar .brand{padding:8px 18px 16px;font-size:13px;letter-spacing:.14em;color:var(--head)}
+.sidebar .brand small{display:block;margin-top:6px;font-size:11px;color:var(--muted);letter-spacing:.04em}
+.sidebar .grp{font-size:11px;letter-spacing:.1em;color:var(--muted);padding:12px 18px 4px}
+.sidebar a{display:block;padding:7px 18px;font-size:12px;color:rgba(220,200,160,.55);
+  border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar a:hover,.sidebar a.active{color:var(--head);background:rgba(180,150,100,.06);
+  border-left-color:rgba(220,180,100,.55)}
+.sidebar a .n{opacity:.45;margin-right:6px;font-size:11px}
+.main{margin-left:230px;flex:1;min-width:0;padding:28px 28px 80px}
+.hero{max-width:1320px;margin:0 auto 24px}
+.hero h1{font-size:clamp(24px,3.6vw,40px);font-weight:500;letter-spacing:.1em;color:var(--head);margin:0 0 10px}
+.hero p{margin:0 0 8px;color:var(--muted);font-size:14px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:11px;letter-spacing:.06em;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted)}
+.toolbar{max-width:1320px;margin:0 auto 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;
+  position:sticky;top:10px;z-index:10}
+.toolbar .label{font-size:12px;color:var(--muted);letter-spacing:.08em}
+.toolbar button{font-size:12px;letter-spacing:.06em;color:var(--head);background:transparent;
+  border:1px solid var(--line);border-radius:6px;padding:7px 12px;cursor:pointer}
+.toolbar button:hover{border-color:rgba(220,180,100,.45)}
+.toolbar button.primary{background:rgba(220,180,100,.12);border-color:rgba(220,180,100,.35)}
+#selCount{color:var(--gold);font-size:13px;margin-left:auto}
+.batch{max-width:1320px;margin:0 auto 52px;scroll-margin-top:80px}
+.batch-head{border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:16px}
+.batch-head h2{margin:0 0 4px;font-size:20px;font-weight:500;color:var(--head);letter-spacing:.08em}
+.batch-head .sub{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+@media(max-width:1000px){.sidebar{display:none}.main{margin-left:0}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  transition:border-color .2s, transform .2s;position:relative}
+.card:hover{border-color:rgba(220,180,100,.35);transform:translateY(-2px)}
+.card.selected{border-color:rgba(220,180,100,.7)}
+.card .img-wrap{aspect-ratio:16/10;background:#0a0d16;cursor:zoom-in;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .meta{padding:10px 12px 12px}
+.card .code{font-size:11px;letter-spacing:.08em;color:var(--seed);margin-bottom:3px}
+.card .title{font-size:13px;color:var(--head)}
+.card .pick{position:absolute;top:10px;left:10px;z-index:2;display:flex;align-items:center;gap:6px;
+  background:rgba(10,10,20,.72);border:1px solid rgba(180,160,120,.25);border-radius:999px;
+  padding:5px 10px;font-size:12px;color:var(--head);backdrop-filter:blur(6px);cursor:pointer}
+.card .pick input{accent-color:#c9a45c;width:14px;height:14px}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;
+  z-index:100;padding:24px;flex-direction:column;gap:12px}
+.lb.open{display:flex}
+.lb img{max-width:min(96vw,1600px);max-height:84vh;object-fit:contain;border-radius:6px}
+.lb .cap{color:var(--head);font-size:14px}
+.lb .close{position:absolute;top:18px;right:22px;font-size:28px;color:#fff;cursor:pointer;opacity:.7}
+.panel{max-width:1320px;margin:28px auto 0;padding:18px;border:1px solid var(--line);
+  border-radius:10px;background:var(--card)}
+.panel h3{margin:0 0 10px;font-size:16px;color:var(--head);letter-spacing:.08em}
+#picks{font-size:13px;color:rgba(224,216,200,.8);white-space:pre-wrap;min-height:40px}
+.foot{max-width:1320px;margin:28px auto 0;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">狐祖归来 · 场景视觉探索<small>两批对照 · 可勾选评选</small></div>
+    <nav id="nav"></nav>
+  </aside>
+  <main class="main">
+    <div class="hero">
+      <h1>东方山水视觉探索 × EP01 全场景</h1>
+      <p>批次 A：东方山水视觉探索 Prompt Library V2.0（胡金铨/聂隐娘强化）· 50 图</p>
+      <p>批次 B：EP01 全场景 Midjourney 英文执行 Prompt V1.2 · 25 图</p>
+      <p>引擎：Seedream 5.0 Pro 文生图直连 · 1920×1080 · MJ 参数已剥离</p>
+      <div class="meta">
+        <span class="chip">A 山水库 50</span>
+        <span class="chip">B EP01 25</span>
+        <span class="chip">点击图放大原图</span>
+        <span class="chip">勾选可导出评选清单</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <span class="label">快捷</span>
+      <button onclick="clearPicks()">清空</button>
+      <button class="primary" onclick="exportPicks()">导出评选结果</button>
+      <span id="selCount">已选 0</span>
+    </div>
+
+    <div id="content"></div>
+
+    <div class="panel">
+      <h3>当前评选</h3>
+      <div id="picks">尚未勾选。勾选后导出一份清单。</div>
+    </div>
+    <div class="foot">本地页 · 图在 originals/thumbs · 2026-08-13</div>
+  </main>
+</div>
+
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <div class="close" onclick="closeLb()">×</div>
+  <img id="lbImg" alt="" />
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+const BATCHES = [
+  {
+    id:"A", name:"A · 东方山水视觉探索 V2.0", sub:"50 场景 · 编号 001–050",
+    group:"山水库", files: "[{"code": "001", "title": "云海中的狐祖山谷", "file": "001_云海中的狐祖山谷.png"}, {"code": "002", "title": "雾锁千峰青丘入口", "file": "002_雾锁千峰青丘入口.png"}, {"code": "003", "title": "月下竹海溪流", "file": "003_月下竹海溪流.png"}, {"code": "004", "title": "雨后青山瀑布", "file": "004_雨后青山瀑布.png"}, {"code": "005", "title": "云雾石桥", "file": "005_云雾石桥.png"}, {"code": "006", "title": "松林深处古道", "file": "006_松林深处古道.png"}, {"code": "007", "title": "悬崖孤灯小屋", "file": "007_悬崖孤灯小屋.png"}, {"code": "008", "title": "雪山青石渡口", "file": "008_雪山青石渡口.png"}, {"code": "009", "title": "烟雨江南狐村", "file": "009_烟雨江南狐村.png"}, {"code": "010", "title": "水乡古桥晨雾", "file": "010_水乡古桥晨雾.png"}, {"code": "011", "title": "荷塘月色狐影", "file": "011_荷塘月色狐影.png"}, {"code": "012", "title": "芦苇荡孤舟", "file": "012_芦苇荡孤舟.png"}, {"code": "013", "title": "雨夜河岸灯火", "file": "013_雨夜河岸灯火.png"}, {"code": "014", "title": "山溪旧茶亭", "file": "014_山溪旧茶亭.png"}, {"code": "015", "title": "古树药草院", "file": "015_古树药草院.png"}, {"code": "016", "title": "竹林石阶路", "file": "016_竹林石阶路.png"}, {"code": "017", "title": "溪水废弃书院", "file": "017_溪水废弃书院.png"}, {"code": "018", "title": "雾中古镇边缘", "file": "018_雾中古镇边缘.png"}, {"code": "019", "title": "云端悬崖古道", "file": "019_云端悬崖古道.png"}, {"code": "020", "title": "峡谷深处瀑布", "file": "020_峡谷深处瀑布.png"}, {"code": "021", "title": "山腹隐藏入口", "file": "021_山腹隐藏入口.png"}, {"code": "022", "title": "雪岭古松", "file": "022_雪岭古松.png"}, {"code": "023", "title": "天坑森林", "file": "023_天坑森林.png"}, {"code": "024", "title": "云海孤峰", "file": "024_云海孤峰.png"}, {"code": "025", "title": "风雪祭石山巅", "file": "025_风雪祭石山巅.png"}, {"code": "026", "title": "悬崖旧木桥", "file": "026_悬崖旧木桥.png"}, {"code": "027", "title": "万年古树森林", "file": "027_万年古树森林.png"}, {"code": "028", "title": "夜色山泉谷", "file": "028_夜色山泉谷.png"}, {"code": "029", "title": "狐族药田", "file": "029_狐族药田.png"}, {"code": "030", "title": "山间晒药平台", "file": "030_山间晒药平台.png"}, {"code": "031", "title": "林中炊烟小屋", "file": "031_林中炊烟小屋.png"}, {"code": "032", "title": "雪夜柴门", "file": "032_雪夜柴门.png"}, {"code": "033", "title": "春日桃林小径", "file": "033_春日桃林小径.png"}, {"code": "034", "title": "秋日银杏古道", "file": "034_秋日银杏古道.png"}, {"code": "035", "title": "夏雨竹屋", "file": "035_夏雨竹屋.png"}, {"code": "036", "title": "冬雪溪亭", "file": "036_冬雪溪亭.png"}, {"code": "037", "title": "山间织布院", "file": "037_山间织布院.png"}, {"code": "038", "title": "古井晨雾", "file": "038_古井晨雾.png"}, {"code": "039", "title": "云中狐祖古树", "file": "039_云中狐祖古树.png"}, {"code": "040", "title": "天地交界山谷", "file": "040_天地交界山谷.png"}, {"code": "041", "title": "月光灵泉", "file": "041_月光灵泉.png"}, {"code": "042", "title": "万年石林", "file": "042_万年石林.png"}, {"code": "043", "title": "雾中巨大狐迹", "file": "043_雾中巨大狐迹.png"}, {"code": "044", "title": "山川水墨幻境", "file": "044_山川水墨幻境.png"}, {"code": "045", "title": "九尾传说遗迹", "file": "045_九尾传说遗迹.png"}, {"code": "046", "title": "天雷前山谷", "file": "046_天雷前山谷.png"}, {"code": "047", "title": "青绿山水幻境", "file": "047_青绿山水幻境.png"}, {"code": "048", "title": "妖雾森林湖", "file": "048_妖雾森林湖.png"}, {"code": "049", "title": "古藤覆盖山谷", "file": "049_古藤覆盖山谷.png"}, {"code": "050", "title": "星月下远山", "file": "050_星月下远山.png"}]"
+  },
+  {
+    id:"B", name:"B · EP01 全场景执行稿 V1.2", sub:"25 场景 · W01–H02",
+    group:"EP01", files: "[{"code": "W01", "title": "Qingqiu Snow-Mountain Residence — World Establishing View", "file": "01_W01_Qingqiu_Snow-Mountain_Residence_—_World_Establishing_View.png"}, {"code": "W02", "title": "Qingqiu Mountain City — Lamp Route and Spatial Hierarchy", "file": "02_W02_Qingqiu_Mountain_City_—_Lamp_Route_and_Spatial_Hierarchy.png"}, {"code": "A01", "title": "Lamp-Keeper Corridor", "file": "03_A01_Lamp-Keeper_Corridor.png"}, {"code": "A02", "title": "Outer Ledge, Thin Ice and Collapsed Roof Tiles", "file": "04_A02_Outer_Ledge,_Thin_Ice_and_Collapsed_Roof_Tiles.png"}, {"code": "B01", "title": "Cliff Walkway and Old Timber Door", "file": "05_B01_Cliff_Walkway_and_Old_Timber_Door.png"}, {"code": "B02", "title": "Black-Water Waterfall and Hidden Stone Passage", "file": "06_B02_Black-Water_Waterfall_and_Hidden_Stone_Passage.png"}, {"code": "C01", "title": "Snow Court of Judgment", "file": "07_C01_Snow_Court_of_Judgment.png"}, {"code": "D01", "title": "Old Residence Kitchen", "file": "08_D01_Old_Residence_Kitchen.png"}, {"code": "D02", "title": "White-Fox Clan Authority Hall", "file": "09_D02_White-Fox_Clan_Authority_Hall.png"}, {"code": "D03", "title": "Kitchen Rear Corridor", "file": "10_D03_Kitchen_Rear_Corridor.png"}, {"code": "D04", "title": "Rear-Wall Water Gate", "file": "11_D04_Rear-Wall_Water_Gate.png"}, {"code": "E01", "title": "Jinglei Water Pavilion — Landscape and Architecture Master", "file": "12_E01_Jinglei_Water_Pavilion_—_Landscape_and_Architecture_Master.png"}, {"code": "E01-L03", "title": "Jinglei Water Pavilion — Complete Sunset Comparison Prompt", "file": "13_E01-L03_Jinglei_Water_Pavilion_—_Complete_Sunset_Comparison_Prompt.png"}, {"code": "E02", "title": "Jinglei Water Pavilion — Relationship and Blocking Space", "file": "14_E02_Jinglei_Water_Pavilion_—_Relationship_and_Blocking_Space.png"}, {"code": "E03", "title": "Jinglei Ritual Table and Implements", "file": "15_E03_Jinglei_Ritual_Table_and_Implements.png"}, {"code": "F01", "title": "Snow-Mountain Ancestral Shrine — Exterior Master", "file": "16_F01_Snow-Mountain_Ancestral_Shrine_—_Exterior_Master.png"}, {"code": "F02", "title": "Ancestral Forecourt — Nine-Beast Ritual Formation", "file": "17_F02_Ancestral_Forecourt_—_Nine-Beast_Ritual_Formation.png"}, {"code": "F03", "title": "Ancestral Entrance and Peeling Timber Doors", "file": "18_F03_Ancestral_Entrance_and_Peeling_Timber_Doors.png"}, {"code": "F04", "title": "Ancestral Interior — Physical Ordeal Mechanism", "file": "19_F04_Ancestral_Interior_—_Physical_Ordeal_Mechanism.png"}, {"code": "G01", "title": "Outside the Locked Doors — Bronze Lock and Snow Steps", "file": "20_G01_Outside_the_Locked_Doors_—_Bronze_Lock_and_Snow_Steps.png"}, {"code": "G02", "title": "Ancestral Side Corridor and Incense Opening", "file": "21_G02_Ancestral_Side_Corridor_and_Incense_Opening.png"}, {"code": "G03", "title": "Ancestral Roof Breach — After Thunder", "file": "22_G03_Ancestral_Roof_Breach_—_After_Thunder.png"}, {"code": "G04", "title": "Nine-Tailed Ancestral Mural Beneath Beam Ash", "file": "23_G04_Nine-Tailed_Ancestral_Mural_Beneath_Beam_Ash.png"}, {"code": "H01", "title": "Beidou Cold-Forest Chess Pavilion", "file": "24_H01_Beidou_Cold-Forest_Chess_Pavilion.png"}, {"code": "H02", "title": "Ze Palace Water-Mirror Hall", "file": "25_H02_Ze_Palace_Water-Mirror_Hall.png"}]"
+  }
+];
+
+// [{"code": "001", "title": "云海中的狐祖山谷", "file": "001_云海中的狐祖山谷.png"}, {"code": "002", "title": "雾锁千峰青丘入口", "file": "002_雾锁千峰青丘入口.png"}, {"code": "003", "title": "月下竹海溪流", "file": "003_月下竹海溪流.png"}, {"code": "004", "title": "雨后青山瀑布", "file": "004_雨后青山瀑布.png"}, {"code": "005", "title": "云雾石桥", "file": "005_云雾石桥.png"}, {"code": "006", "title": "松林深处古道", "file": "006_松林深处古道.png"}, {"code": "007", "title": "悬崖孤灯小屋", "file": "007_悬崖孤灯小屋.png"}, {"code": "008", "title": "雪山青石渡口", "file": "008_雪山青石渡口.png"}, {"code": "009", "title": "烟雨江南狐村", "file": "009_烟雨江南狐村.png"}, {"code": "010", "title": "水乡古桥晨雾", "file": "010_水乡古桥晨雾.png"}, {"code": "011", "title": "荷塘月色狐影", "file": "011_荷塘月色狐影.png"}, {"code": "012", "title": "芦苇荡孤舟", "file": "012_芦苇荡孤舟.png"}, {"code": "013", "title": "雨夜河岸灯火", "file": "013_雨夜河岸灯火.png"}, {"code": "014", "title": "山溪旧茶亭", "file": "014_山溪旧茶亭.png"}, {"code": "015", "title": "古树药草院", "file": "015_古树药草院.png"}, {"code": "016", "title": "竹林石阶路", "file": "016_竹林石阶路.png"}, {"code": "017", "title": "溪水废弃书院", "file": "017_溪水废弃书院.png"}, {"code": "018", "title": "雾中古镇边缘", "file": "018_雾中古镇边缘.png"}, {"code": "019", "title": "云端悬崖古道", "file": "019_云端悬崖古道.png"}, {"code": "020", "title": "峡谷深处瀑布", "file": "020_峡谷深处瀑布.png"}, {"code": "021", "title": "山腹隐藏入口", "file": "021_山腹隐藏入口.png"}, {"code": "022", "title": "雪岭古松", "file": "022_雪岭古松.png"}, {"code": "023", "title": "天坑森林", "file": "023_天坑森林.png"}, {"code": "024", "title": "云海孤峰", "file": "024_云海孤峰.png"}, {"code": "025", "title": "风雪祭石山巅", "file": "025_风雪祭石山巅.png"}, {"code": "026", "title": "悬崖旧木桥", "file": "026_悬崖旧木桥.png"}, {"code": "027", "title": "万年古树森林", "file": "027_万年古树森林.png"}, {"code": "028", "title": "夜色山泉谷", "file": "028_夜色山泉谷.png"}, {"code": "029", "title": "狐族药田", "file": "029_狐族药田.png"}, {"code": "030", "title": "山间晒药平台", "file": "030_山间晒药平台.png"}, {"code": "031", "title": "林中炊烟小屋", "file": "031_林中炊烟小屋.png"}, {"code": "032", "title": "雪夜柴门", "file": "032_雪夜柴门.png"}, {"code": "033", "title": "春日桃林小径", "file": "033_春日桃林小径.png"}, {"code": "034", "title": "秋日银杏古道", "file": "034_秋日银杏古道.png"}, {"code": "035", "title": "夏雨竹屋", "file": "035_夏雨竹屋.png"}, {"code": "036", "title": "冬雪溪亭", "file": "036_冬雪溪亭.png"}, {"code": "037", "title": "山间织布院", "file": "037_山间织布院.png"}, {"code": "038", "title": "古井晨雾", "file": "038_古井晨雾.png"}, {"code": "039", "title": "云中狐祖古树", "file": "039_云中狐祖古树.png"}, {"code": "040", "title": "天地交界山谷", "file": "040_天地交界山谷.png"}, {"code": "041", "title": "月光灵泉", "file": "041_月光灵泉.png"}, {"code": "042", "title": "万年石林", "file": "042_万年石林.png"}, {"code": "043", "title": "雾中巨大狐迹", "file": "043_雾中巨大狐迹.png"}, {"code": "044", "title": "山川水墨幻境", "file": "044_山川水墨幻境.png"}, {"code": "045", "title": "九尾传说遗迹", "file": "045_九尾传说遗迹.png"}, {"code": "046", "title": "天雷前山谷", "file": "046_天雷前山谷.png"}, {"code": "047", "title": "青绿山水幻境", "file": "047_青绿山水幻境.png"}, {"code": "048", "title": "妖雾森林湖", "file": "048_妖雾森林湖.png"}, {"code": "049", "title": "古藤覆盖山谷", "file": "049_古藤覆盖山谷.png"}, {"code": "050", "title": "星月下远山", "file": "050_星月下远山.png"}] and [{"code": "W01", "title": "Qingqiu Snow-Mountain Residence — World Establishing View", "file": "01_W01_Qingqiu_Snow-Mountain_Residence_—_World_Establishing_View.png"}, {"code": "W02", "title": "Qingqiu Mountain City — Lamp Route and Spatial Hierarchy", "file": "02_W02_Qingqiu_Mountain_City_—_Lamp_Route_and_Spatial_Hierarchy.png"}, {"code": "A01", "title": "Lamp-Keeper Corridor", "file": "03_A01_Lamp-Keeper_Corridor.png"}, {"code": "A02", "title": "Outer Ledge, Thin Ice and Collapsed Roof Tiles", "file": "04_A02_Outer_Ledge,_Thin_Ice_and_Collapsed_Roof_Tiles.png"}, {"code": "B01", "title": "Cliff Walkway and Old Timber Door", "file": "05_B01_Cliff_Walkway_and_Old_Timber_Door.png"}, {"code": "B02", "title": "Black-Water Waterfall and Hidden Stone Passage", "file": "06_B02_Black-Water_Waterfall_and_Hidden_Stone_Passage.png"}, {"code": "C01", "title": "Snow Court of Judgment", "file": "07_C01_Snow_Court_of_Judgment.png"}, {"code": "D01", "title": "Old Residence Kitchen", "file": "08_D01_Old_Residence_Kitchen.png"}, {"code": "D02", "title": "White-Fox Clan Authority Hall", "file": "09_D02_White-Fox_Clan_Authority_Hall.png"}, {"code": "D03", "title": "Kitchen Rear Corridor", "file": "10_D03_Kitchen_Rear_Corridor.png"}, {"code": "D04", "title": "Rear-Wall Water Gate", "file": "11_D04_Rear-Wall_Water_Gate.png"}, {"code": "E01", "title": "Jinglei Water Pavilion — Landscape and Architecture Master", "file": "12_E01_Jinglei_Water_Pavilion_—_Landscape_and_Architecture_Master.png"}, {"code": "E01-L03", "title": "Jinglei Water Pavilion — Complete Sunset Comparison Prompt", "file": "13_E01-L03_Jinglei_Water_Pavilion_—_Complete_Sunset_Comparison_Prompt.png"}, {"code": "E02", "title": "Jinglei Water Pavilion — Relationship and Blocking Space", "file": "14_E02_Jinglei_Water_Pavilion_—_Relationship_and_Blocking_Space.png"}, {"code": "E03", "title": "Jinglei Ritual Table and Implements", "file": "15_E03_Jinglei_Ritual_Table_and_Implements.png"}, {"code": "F01", "title": "Snow-Mountain Ancestral Shrine — Exterior Master", "file": "16_F01_Snow-Mountain_Ancestral_Shrine_—_Exterior_Master.png"}, {"code": "F02", "title": "Ancestral Forecourt — Nine-Beast Ritual Formation", "file": "17_F02_Ancestral_Forecourt_—_Nine-Beast_Ritual_Formation.png"}, {"code": "F03", "title": "Ancestral Entrance and Peeling Timber Doors", "file": "18_F03_Ancestral_Entrance_and_Peeling_Timber_Doors.png"}, {"code": "F04", "title": "Ancestral Interior — Physical Ordeal Mechanism", "file": "19_F04_Ancestral_Interior_—_Physical_Ordeal_Mechanism.png"}, {"code": "G01", "title": "Outside the Locked Doors — Bronze Lock and Snow Steps", "file": "20_G01_Outside_the_Locked_Doors_—_Bronze_Lock_and_Snow_Steps.png"}, {"code": "G02", "title": "Ancestral Side Corridor and Incense Opening", "file": "21_G02_Ancestral_Side_Corridor_and_Incense_Opening.png"}, {"code": "G03", "title": "Ancestral Roof Breach — After Thunder", "file": "22_G03_Ancestral_Roof_Breach_—_After_Thunder.png"}, {"code": "G04", "title": "Nine-Tailed Ancestral Mural Beneath Beam Ash", "file": "23_G04_Nine-Tailed_Ancestral_Mural_Beneath_Beam_Ash.png"}, {"code": "H01", "title": "Beidou Cold-Forest Chess Pavilion", "file": "24_H01_Beidou_Cold-Forest_Chess_Pavilion.png"}, {"code": "H02", "title": "Ze Palace Water-Mirror Hall", "file": "25_H02_Ze_Palace_Water-Mirror_Hall.png"}] replaced at build time with JSON arrays of {code,title,file}
+const A_FILES = JSON.parse('[{"code": "001", "title": "云海中的狐祖山谷", "file": "001_云海中的狐祖山谷.png"}, {"code": "002", "title": "雾锁千峰青丘入口", "file": "002_雾锁千峰青丘入口.png"}, {"code": "003", "title": "月下竹海溪流", "file": "003_月下竹海溪流.png"}, {"code": "004", "title": "雨后青山瀑布", "file": "004_雨后青山瀑布.png"}, {"code": "005", "title": "云雾石桥", "file": "005_云雾石桥.png"}, {"code": "006", "title": "松林深处古道", "file": "006_松林深处古道.png"}, {"code": "007", "title": "悬崖孤灯小屋", "file": "007_悬崖孤灯小屋.png"}, {"code": "008", "title": "雪山青石渡口", "file": "008_雪山青石渡口.png"}, {"code": "009", "title": "烟雨江南狐村", "file": "009_烟雨江南狐村.png"}, {"code": "010", "title": "水乡古桥晨雾", "file": "010_水乡古桥晨雾.png"}, {"code": "011", "title": "荷塘月色狐影", "file": "011_荷塘月色狐影.png"}, {"code": "012", "title": "芦苇荡孤舟", "file": "012_芦苇荡孤舟.png"}, {"code": "013", "title": "雨夜河岸灯火", "file": "013_雨夜河岸灯火.png"}, {"code": "014", "title": "山溪旧茶亭", "file": "014_山溪旧茶亭.png"}, {"code": "015", "title": "古树药草院", "file": "015_古树药草院.png"}, {"code": "016", "title": "竹林石阶路", "file": "016_竹林石阶路.png"}, {"code": "017", "title": "溪水废弃书院", "file": "017_溪水废弃书院.png"}, {"code": "018", "title": "雾中古镇边缘", "file": "018_雾中古镇边缘.png"}, {"code": "019", "title": "云端悬崖古道", "file": "019_云端悬崖古道.png"}, {"code": "020", "title": "峡谷深处瀑布", "file": "020_峡谷深处瀑布.png"}, {"code": "021", "title": "山腹隐藏入口", "file": "021_山腹隐藏入口.png"}, {"code": "022", "title": "雪岭古松", "file": "022_雪岭古松.png"}, {"code": "023", "title": "天坑森林", "file": "023_天坑森林.png"}, {"code": "024", "title": "云海孤峰", "file": "024_云海孤峰.png"}, {"code": "025", "title": "风雪祭石山巅", "file": "025_风雪祭石山巅.png"}, {"code": "026", "title": "悬崖旧木桥", "file": "026_悬崖旧木桥.png"}, {"code": "027", "title": "万年古树森林", "file": "027_万年古树森林.png"}, {"code": "028", "title": "夜色山泉谷", "file": "028_夜色山泉谷.png"}, {"code": "029", "title": "狐族药田", "file": "029_狐族药田.png"}, {"code": "030", "title": "山间晒药平台", "file": "030_山间晒药平台.png"}, {"code": "031", "title": "林中炊烟小屋", "file": "031_林中炊烟小屋.png"}, {"code": "032", "title": "雪夜柴门", "file": "032_雪夜柴门.png"}, {"code": "033", "title": "春日桃林小径", "file": "033_春日桃林小径.png"}, {"code": "034", "title": "秋日银杏古道", "file": "034_秋日银杏古道.png"}, {"code": "035", "title": "夏雨竹屋", "file": "035_夏雨竹屋.png"}, {"code": "036", "title": "冬雪溪亭", "file": "036_冬雪溪亭.png"}, {"code": "037", "title": "山间织布院", "file": "037_山间织布院.png"}, {"code": "038", "title": "古井晨雾", "file": "038_古井晨雾.png"}, {"code": "039", "title": "云中狐祖古树", "file": "039_云中狐祖古树.png"}, {"code": "040", "title": "天地交界山谷", "file": "040_天地交界山谷.png"}, {"code": "041", "title": "月光灵泉", "file": "041_月光灵泉.png"}, {"code": "042", "title": "万年石林", "file": "042_万年石林.png"}, {"code": "043", "title": "雾中巨大狐迹", "file": "043_雾中巨大狐迹.png"}, {"code": "044", "title": "山川水墨幻境", "file": "044_山川水墨幻境.png"}, {"code": "045", "title": "九尾传说遗迹", "file": "045_九尾传说遗迹.png"}, {"code": "046", "title": "天雷前山谷", "file": "046_天雷前山谷.png"}, {"code": "047", "title": "青绿山水幻境", "file": "047_青绿山水幻境.png"}, {"code": "048", "title": "妖雾森林湖", "file": "048_妖雾森林湖.png"}, {"code": "049", "title": "古藤覆盖山谷", "file": "049_古藤覆盖山谷.png"}, {"code": "050", "title": "星月下远山", "file": "050_星月下远山.png"}]');
+const B_FILES = JSON.parse('[{"code": "W01", "title": "Qingqiu Snow-Mountain Residence — World Establishing View", "file": "01_W01_Qingqiu_Snow-Mountain_Residence_—_World_Establishing_View.png"}, {"code": "W02", "title": "Qingqiu Mountain City — Lamp Route and Spatial Hierarchy", "file": "02_W02_Qingqiu_Mountain_City_—_Lamp_Route_and_Spatial_Hierarchy.png"}, {"code": "A01", "title": "Lamp-Keeper Corridor", "file": "03_A01_Lamp-Keeper_Corridor.png"}, {"code": "A02", "title": "Outer Ledge, Thin Ice and Collapsed Roof Tiles", "file": "04_A02_Outer_Ledge,_Thin_Ice_and_Collapsed_Roof_Tiles.png"}, {"code": "B01", "title": "Cliff Walkway and Old Timber Door", "file": "05_B01_Cliff_Walkway_and_Old_Timber_Door.png"}, {"code": "B02", "title": "Black-Water Waterfall and Hidden Stone Passage", "file": "06_B02_Black-Water_Waterfall_and_Hidden_Stone_Passage.png"}, {"code": "C01", "title": "Snow Court of Judgment", "file": "07_C01_Snow_Court_of_Judgment.png"}, {"code": "D01", "title": "Old Residence Kitchen", "file": "08_D01_Old_Residence_Kitchen.png"}, {"code": "D02", "title": "White-Fox Clan Authority Hall", "file": "09_D02_White-Fox_Clan_Authority_Hall.png"}, {"code": "D03", "title": "Kitchen Rear Corridor", "file": "10_D03_Kitchen_Rear_Corridor.png"}, {"code": "D04", "title": "Rear-Wall Water Gate", "file": "11_D04_Rear-Wall_Water_Gate.png"}, {"code": "E01", "title": "Jinglei Water Pavilion — Landscape and Architecture Master", "file": "12_E01_Jinglei_Water_Pavilion_—_Landscape_and_Architecture_Master.png"}, {"code": "E01-L03", "title": "Jinglei Water Pavilion — Complete Sunset Comparison Prompt", "file": "13_E01-L03_Jinglei_Water_Pavilion_—_Complete_Sunset_Comparison_Prompt.png"}, {"code": "E02", "title": "Jinglei Water Pavilion — Relationship and Blocking Space", "file": "14_E02_Jinglei_Water_Pavilion_—_Relationship_and_Blocking_Space.png"}, {"code": "E03", "title": "Jinglei Ritual Table and Implements", "file": "15_E03_Jinglei_Ritual_Table_and_Implements.png"}, {"code": "F01", "title": "Snow-Mountain Ancestral Shrine — Exterior Master", "file": "16_F01_Snow-Mountain_Ancestral_Shrine_—_Exterior_Master.png"}, {"code": "F02", "title": "Ancestral Forecourt — Nine-Beast Ritual Formation", "file": "17_F02_Ancestral_Forecourt_—_Nine-Beast_Ritual_Formation.png"}, {"code": "F03", "title": "Ancestral Entrance and Peeling Timber Doors", "file": "18_F03_Ancestral_Entrance_and_Peeling_Timber_Doors.png"}, {"code": "F04", "title": "Ancestral Interior — Physical Ordeal Mechanism", "file": "19_F04_Ancestral_Interior_—_Physical_Ordeal_Mechanism.png"}, {"code": "G01", "title": "Outside the Locked Doors — Bronze Lock and Snow Steps", "file": "20_G01_Outside_the_Locked_Doors_—_Bronze_Lock_and_Snow_Steps.png"}, {"code": "G02", "title": "Ancestral Side Corridor and Incense Opening", "file": "21_G02_Ancestral_Side_Corridor_and_Incense_Opening.png"}, {"code": "G03", "title": "Ancestral Roof Breach — After Thunder", "file": "22_G03_Ancestral_Roof_Breach_—_After_Thunder.png"}, {"code": "G04", "title": "Nine-Tailed Ancestral Mural Beneath Beam Ash", "file": "23_G04_Nine-Tailed_Ancestral_Mural_Beneath_Beam_Ash.png"}, {"code": "H01", "title": "Beidou Cold-Forest Chess Pavilion", "file": "24_H01_Beidou_Cold-Forest_Chess_Pavilion.png"}, {"code": "H02", "title": "Ze Palace Water-Mirror Hall", "file": "25_H02_Ze_Palace_Water-Mirror_Hall.png"}]');
+const DATA = { A: A_FILES, B: B_FILES };
+const picks = new Set();
+
+function render(){
+  const nav=document.getElementById("nav");
+  const root=document.getElementById("content");
+  nav.innerHTML=""; root.innerHTML="";
+  BATCHES.forEach(b=>{
+    const files=DATA[b.id];
+    const grp=document.createElement("div");
+    grp.className="grp"; grp.textContent=b.group;
+    nav.appendChild(grp);
+    files.forEach((f,i)=>{
+      const a=document.createElement("a");
+      a.href="#"+b.id+"-"+f.code;
+      a.innerHTML='<span class="n">'+f.code+'</span>'+f.title;
+      nav.appendChild(a);
+    });
+
+    const sec=document.createElement("section");
+    sec.className="batch"; sec.id="batch-"+b.id;
+    sec.innerHTML='<div class="batch-head"><h2>'+b.name+'</h2><div class="sub">'+b.sub+' · 共 '+files.length+' 图</div></div>';
+    const grid=document.createElement("div");
+    grid.className="grid";
+    files.forEach((f,i)=>{
+      const card=document.createElement("div");
+      card.className="card"; card.dataset.key=b.id+"|"+f.code;
+      const key=b.id+"|"+f.code;
+      if(picks.has(key)) card.classList.add("selected");
+      const thumb="thumbs/"+b.id+"_"+f.file.replace(/\.png$/,".jpg");
+      const full="originals/"+b.id+"_"+f.file;
+      card.innerHTML=
+        '<label class="pick"><input type="checkbox" '+(picks.has(key)?"checked":"")+
+        ' onchange="togglePick(this,\''+key+'\')">选中</label>'+
+        '<div class="img-wrap" onclick="openLb(\''+full+'\',\''+f.code+' · '+f.title+'\')">'+
+        '<img src="'+thumb+'" alt="'+f.code+'" loading="lazy"></div>'+
+        '<div class="meta"><div class="code">'+f.code+'</div><div class="title">'+f.title+'</div></div>';
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+    root.appendChild(sec);
+  });
+  updateCount();
+  spy();
+}
+
+function togglePick(el,key){
+  const card=document.querySelector('.card[data-key="'+key+'"]');
+  if(el.checked){picks.add(key);card&&card.classList.add("selected");}
+  else{picks.delete(key);card&&card.classList.remove("selected");}
+  updateCount();
+}
+function clearPicks(){picks.clear();render();}
+function updateCount(){
+  document.getElementById("selCount").textContent="已选 "+picks.size;
+  const lines=[];
+  [...picks].sort().forEach(k=>{
+    const [bid,code]=k.split("|");
+    const b=BATCHES.find(x=>x.id===bid);
+    const f=DATA[bid].find(x=>x.code===code);
+    lines.push((b?b.group+" ":"")+code+" · "+(f?f.title:""));
+  });
+  document.getElementById("picks").textContent = lines.length? lines.join("\n") : "尚未勾选。";
+}
+function exportPicks(){
+  const lines=["# 狐祖 · 场景视觉探索评选", "", "时间： "+new Date().toLocaleString("zh-CN"), "",
+    "| 批次 | 编号 | 标题 |", "|---|---|---|"];
+  [...picks].sort().forEach(k=>{
+    const [bid,code]=k.split("|");
+    const b=BATCHES.find(x=>x.id===bid);
+    const f=DATA[bid].find(x=>x.code===code);
+    lines.push("| "+(b?b.group:"")+" | "+code+" | "+(f?f.title:"")+" |");
+  });
+  if(!picks.size) lines.push("","（空）");
+  const blob=new Blob([lines.join("\n")],{type:"text/markdown;charset=utf-8"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="狐祖_场景视觉评选.md"; a.click();
+  URL.revokeObjectURL(a.href);
+}
+function openLb(src,cap){
+  document.getElementById("lbImg").src=src;
+  document.getElementById("lbCap").textContent=cap;
+  document.getElementById("lb").classList.add("open");
+}
+function closeLb(){document.getElementById("lb").classList.remove("open");}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
+function spy(){
+  const links=[...document.querySelectorAll(".sidebar a")];
+  const secs=[...document.querySelectorAll(".batch")];
+  const anchors=[...document.querySelectorAll(".sidebar a")];
+  function onScroll(){
+    const y=window.scrollY+110;
+    let cur=null;
+    secs.forEach(s=>{
+      const cards=[...s.querySelectorAll(".card")];
+      cards.forEach(c=>{ if(c.offsetTop<=y) cur=c; });
+    });
+    anchors.forEach(a=>a.classList.remove("active"));
+    if(cur){
+      const key=cur.dataset.key;
+      if(key){
+        const [bid,code]=key.split("|");
+        const link=document.querySelector('.sidebar a[href="#'+bid+'-'+code+'"]');
+        if(link) link.classList.add("active");
+      }
+    }
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+}
+render();
+</script>
+</body>
+</html>
