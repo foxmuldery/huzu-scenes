@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青丘祖祠 · V3 · 狐祖归来</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:210px;background:linear-gradient(180deg,#0d1025 0%,#0a0d1a 100%);border-right:1px solid rgba(180,160,120,.12);z-index:100;display:flex;flex-direction:column;padding:28px 0 20px}
+.sidebar-brand{padding:0 22px 20px;font-size:17px;letter-spacing:.15em;color:#d4c8a0;text-align:center;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 10px}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px;letter-spacing:.08em;color:rgba(200,180,150,.55);text-decoration:none;border-radius:6px;transition:all .25s}
+.sidebar-nav a:hover{color:#d4c8a0;background:rgba(200,170,120,.06)}
+.sidebar-nav a.active{color:#e0d4b0;background:rgba(200,170,120,.1);border:1px solid rgba(200,170,120,.2)}
+.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-subnav{margin-top:8px;padding:0 10px;border-top:1px solid rgba(180,160,120,.08);overflow-y:auto;flex:1}
+.sidebar-subnav .subnav-label{padding:12px 14px 6px;font-size:11px;letter-spacing:.15em;color:rgba(180,160,120,.3)}
+.sidebar-subnav a{display:flex;align-items:center;gap:6px;padding:5px 14px;font-size:12px;letter-spacing:.05em;color:rgba(180,150,120,.35);text-decoration:none;border-radius:4px;transition:all .2s;margin:1px 0}
+.sidebar-subnav a:hover{color:#c8b890;background:rgba(200,170,120,.04)}
+.sidebar-subnav a.active{color:#d4c8a0;background:rgba(200,170,120,.08);border:1px solid rgba(200,170,120,.15)}
+.badge{padding:1px 6px;font-size:10px;letter-spacing:.1em;background:rgba(140,190,170,.15);color:#8cb8a8;border-radius:3px;margin-left:4px}
+.sidebar-toggle{display:none;position:fixed;left:16px;top:16px;z-index:200;font-size:24px;color:rgba(200,170,130,.6);cursor:pointer;background:none;border:none;padding:6px}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.body-wrap{margin-left:210px}
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,56px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55)}
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;align-items:start;padding-bottom:8px}
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s}
+.card:hover{transform:translateY(-3px);border-color:rgba(180,140,80,.4);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .4s}
+.card:hover img{transform:scale(1.02)}
+.card .label{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:15px;color:#d4c8a8;letter-spacing:.05em}
+.card .label .scene-script{font-size:12px;color:rgba(210,190,160,.55);line-height:1.6;text-align:right}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px}
+.lightbox .lb-info{margin-top:14px;font-size:15px;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.6}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.footer{text-align:center;padding:50px 20px;font-size:13px;color:rgba(150,130,90,.35)}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .sidebar-toggle{display:block}.sidebar-overlay.show{display:block}
+  .body-wrap{margin-left:0}.gallery{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">狐祖 · 场景<span class="badge">V3</span></div>
+  <div class="sidebar-nav">
+    <a href="../"><span class="nav-icon">🏠</span> 首页 V1</a>
+    <a href="./"><span class="nav-icon">🏠</span> 首页 V3</a>
+    <a href="../qingqiu-kingdom/"><span class="nav-icon">🏯</span> 青丘王府</a>
+    <a href="./" class="active"><span class="nav-icon">⛩️</span> 青丘祖祠</a>
+  </div>
+  <div class="sidebar-subnav" id="subnav"></div>
+</nav>
+
+<div class="body-wrap">
+
+<header class="hero">
+  <p class="ep-title">狐祖归来 · EP01 <span class="badge" style="margin-left:10px">V3</span></p>
+  <h1>青 丘 祖 祠</h1>
+</header>
+
+<div id="content-root"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">&times;</span>
+  <span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">V3 · 原生文本重生 · FOLW KingHu · 宋绢美学</div>
+
+</div>
+
+<script>
+const scenes=[
+// ── 祖祠前道 ──
+{file:"A00_祖祠前道入口_巨印崖壁.png",name:"A00 · 祖祠前道巨印",script:"雪山隘口——巨型圆石古印嵌入崖壁，蜿蜒石径贴山而上",section:"🚪 祖祠前道",anchor:"A00"},
+
+// ── 山体关系 ──
+{file:"A01_山体关系总母版.png",name:"A01 · 山体关系总母版",script:"「这座山本身就是狐祖留下的身体」——远眺祖祠嵌入绝壁，山不是背景，山是主体",section:"🗻 山体关系",anchor:"A01"},
+
+// ── 祖祠入口 ──
+{file:"A02_祖祠入口近景.png",name:"A02 · 祖祠入口近景",script:"祖祠入口——宋式建筑嵌入山体，古老、风化、持续维护",section:"🚪 祖祠入口",anchor:"A02"},
+
+// ── 弯折祭道 ──
+{file:"A03_弯折祭道_孤影.png",name:"A03 · 弯折祭道孤影",script:"石台悬于绝壁——孤影立于崖边，石阶贴山蜿蜒",section:"🛤️ 弯折祭道",anchor:"A03"},
+{file:"A03_弯折祭道_行列.png",name:"A03 · 弯折祭道行列",script:"白衣行列沿桥而上——祖祠入口悬于崖壁高处",section:"🛤️ 弯折祭道",anchor:"A03"},
+
+// ── 祭礼平台 ──
+{file:"A04_祭礼平台_雷兽与狐族祭祀.png",name:"A04 · 祭礼平台祭祀",script:"同心圆黑石祭坪——中央主祭张开双臂，巨型雷兽镇守后方，数十白衣狐面者环立",section:"⛩️ 祭礼平台",anchor:"A04"},
+
+// ── 侧廊 ──
+{file:"A06_侧廊_九尾挂轴.png",name:"A06 · 侧廊九尾挂轴",script:"木廊贴崖悬空——九尾白狐挂轴悬于壁，廊灯暖光映湿木",section:"🌉 侧廊",anchor:"A06"},
+
+// ── 外部V2 ──
+{file:"SC01_青丘雪山祖祠外部关系_v1.png",name:"SC01 · 雪山祖祠外部",script:"雪山压迫——小祖祠被山体吞没，一点灯火",section:"🗻 外部",anchor:""},
+{file:"SC02_祖祠弯折祭道_v1.png",name:"SC02 · 弯折祭道",script:"贴山石阶——多次折返、绝壁与深谷",section:"🗻 外部",anchor:""},
+
+// ── 内部现实层 ──
+{file:"SC04_祖祠正殿_现实圣地_v1.png",name:"SC04 · 祖祠正殿",script:"黑石、旧木、古祭案、无字祖碑、长明灯——千年来未曾改变",section:"🏛️ 内部",anchor:""},
+{file:"SC05_祖祠后壁裂隙_v1.png",name:"SC05 · 后壁裂隙",script:"山自己裂开——只见未知微光",section:"🏛️ 内部",anchor:""},
+{file:"狐祖归来_EP01_S08_祖祠内_静默主场景_v1.png",name:"S08 · 静默主场景",script:"祖祠内部空景——黑石铺地、无字祖碑居中、长明灯序列",section:"🏛️ 内部",anchor:""},
+{file:"狐祖归来_EP01_S08_祖祠内_山体开启状态_v1.png",name:"S08 · 山体开启",script:"后壁裂隙扩展——冷光涌入，青绿祖光初现",section:"🏛️ 内部",anchor:""},
+{file:"SC15_青丘壁画_九尾百兽图.png",name:"SC15 · 青丘壁画",script:"祖祠内壁巨幅壁画——中央九尾白狐端坐，百兽环侍",section:"🏛️ 内部",anchor:""},
+
+// ── 试炼空间 ──
+{file:"SC06_虚无试炼空间_v1.png",name:"SC06 · 虚无试炼",script:"无尽黑暗——漂浮山体碎片与冻结时间",section:"🌌 试炼空间",anchor:""},
+{file:"SC07_狐祖影子降临空间_v1.png",name:"SC07 · 狐祖影子降临",script:"不可理解的九尾巨影——压迫试炼空间",section:"🌌 试炼空间",anchor:""},
+{file:"SC08_影门_v1.png",name:"SC08 · 影门",script:"狐祖之影自身裂开为门",section:"🌌 试炼空间",anchor:""},
+
+// ── 九尾圣域 ──
+{file:"SC09_九尾圣域大全景_v1.png",name:"SC09 · 九尾圣域大全景",script:"九道巨型黑色岩层尾脉——非建筑非洞穴，狐祖本体空间",section:"🦊 九尾圣域",anchor:""},
+{file:"SC10_九尾巨石近景_v1.png",name:"SC10 · 九尾巨石近景",script:"黑玉碎岩道逼近祖源——巨尾岩层低垂",section:"🦊 九尾圣域",anchor:""},
+{file:"SC11_血脉核心_v1.png",name:"SC11 · 血脉核心",script:"九尾汇聚处的活性祖源",section:"🦊 九尾圣域",anchor:""},
+{file:"SC12_无字祖碑圣域态_v1.png",name:"SC12 · 无字祖碑圣域态",script:"无字黑玉碑成为世界规则",section:"🦊 九尾圣域",anchor:""},
+{file:"SC13_祖源火_v1.png",name:"SC13 · 祖源火",script:"黑玉岩层内部燃起的血脉源火",section:"🦊 九尾圣域",anchor:""},
+{file:"SC14_雪娘尺度验证_v1.png",name:"SC14 · 雪娘尺度验证",script:"雪娘仅作微小比例点——被圣域吞没",section:"🦊 九尾圣域",anchor:""},
+
+// ── 净雷室水池版 ──
+{file:"jinglei-pool/净雷室_空景总母版.png",name:"净雷室 · 空景总母版",script:"南侧入口向北望——三级湿黑石阶、左侧寒池冷泉、右侧黑石仪式台——含水池版",section:"🌩️ 净雷室 · 水池版",anchor:"J01"},
+{file:"jinglei-pool/净雷室_南侧入口通道.png",name:"净雷室 · 南侧入口通道",script:"厚重铁木门——湿黑石阶引向暗室、狭长水池浮月白碎冰",section:"🌩️ 净雷室 · 水池版",anchor:"J01"},
+{file:"jinglei-pool/净雷室_仪式台近景_笔盏与狐火.png",name:"净雷室 · 仪式台近景",script:"低矮黑石仪式台——暗哑玉盏、旧金笔、幽蓝狐火",section:"🌩️ 净雷室 · 水池版",anchor:"J01"},
+{file:"jinglei-pool/净雷室_俯视布局.png",name:"净雷室 · 俯视布局",script:"俯瞰全室——北墙裂隙透冰蓝光、左水池右祭台、四纱分离垂穹",section:"🌩️ 净雷室 · 水池版",anchor:"J01"},
+{file:"jinglei-pool/R05-P1_雪娘指尖蘸朱金膏_无工具.jpeg",name:"净雷室 · 雪娘蘸朱金膏",script:"雪娘指尖蘸朱金膏——无工具、赤手、仪式动作锚点",section:"🌩️ 净雷室 · 水池版",anchor:"J01"},
+
+// ── 净雷室45度俯瞰 ──
+{file:"jinglei-pool/净雷室_空景总母版_45度俯瞰动作锚点.png",name:"俯瞰 · 空景总母版",script:"45度斜俯瞰——空间完整关系、水池位置固定",section:"🔭 净雷室 · 45°俯瞰",anchor:"J01"},
+{file:"jinglei-pool/净雷室_南侧入口通道_45度俯瞰动作锚点.png",name:"俯瞰 · 南侧入口",script:"45度俯瞰——入口方向空间关系",section:"🔭 净雷室 · 45°俯瞰",anchor:"J01"},
+{file:"jinglei-pool/净雷室_仪式台近景_笔盏与狐火_45度俯瞰动作锚点.png",name:"俯瞰 · 仪式台",script:"45度俯瞰——仪式台与水池的平面关系",section:"🔭 净雷室 · 45°俯瞰",anchor:"J01"},
+{file:"jinglei-pool/净雷室_俯视布局_45度俯瞰动作锚点.png",name:"俯瞰 · 俯视布局",script:"45度俯瞰——全室平面规划、空间动线",section:"🔭 净雷室 · 45°俯瞰",anchor:"J01"},
+{file:"jinglei-pool/R05-P1_雪娘指尖蘸朱金膏_无工具_45度俯瞰动作锚点.png",name:"俯瞰 · 雪娘蘸朱金膏",script:"45度俯瞰——雪娘在水池边的动作空间关系",section:"🔭 净雷室 · 45°俯瞰",anchor:"J01"},
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();let secIdx=0;
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);const block=document.createElement("div");block.className="section-block";block.id="sec-"+secIdx;secIdx++;
+const title=document.createElement("div");title.className="section-title";
+const count=scenes.filter(s=>s.section===sec).length;
+title.innerHTML=`<div class="line"></div><h2>▎${sec} <span style="font-size:12px;color:rgba(180,160,120,.35);letter-spacing:.06em">${count} 景</span></h2><div class="line"></div>`;block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";gallery.setAttribute("data-section",sec);block.appendChild(gallery);root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div>`;
+card.addEventListener("click",()=>openLightbox(i));gal.appendChild(card);
+});
+const subnav=document.getElementById("subnav"),sections=[];subnav.innerHTML='<div class="subnav-label">分区</div>';
+doneSections.forEach(sec=>{const id="sec-"+sections.length;sections.push({id,sec});const a=document.createElement("a");a.href="#"+id;a.textContent=sec;subnav.appendChild(a)});
+function updateActiveNav(){const els=subnav.querySelectorAll("a");let active=0;for(let i=els.length-1;i>=0;i--){const s=document.getElementById("sec-"+i);if(s&&s.getBoundingClientRect().top<window.innerHeight*.7){active=i;break}}els.forEach((a,i)=>{a.classList.toggle("active",i===active)})}
+window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbInfo.innerHTML=`<b>${s.name}</b> · ${cur+1}/${scenes.length}<br><span style="font-size:13px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+function toggleSidebar(){var s=document.getElementById("sidebar"),o=document.getElementById("sidebarOverlay");s.classList.toggle("open");o.classList.toggle("show")}
+</script>
+</body>
+</html>
